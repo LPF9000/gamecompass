@@ -1,0 +1,5734 @@
+{
+  "protocol": {
+    "protocol_version": 2,
+    "seed": 20261110,
+    "cap_per_history": 500,
+    "base_split_seed": 42,
+    "dataset_sha256": "e873ed8dc766549b66d69496a6580d38242fa84786f6ce029609241b94e0a76f",
+    "base_version": "development-1500-42-20261111T004254213166Z",
+    "base_split_sha256": "d73cdf559e70d7eb1c3b2aa7cf43b3985b4cb77f1b031a3a5d04a41d43db0ae0",
+    "base_weight_checksums": {
+      "content.npz": "a51516d70d990dcea53e460dbd4c25086afa3bb520b49759d0bf30ea645415b8",
+      "knn.npz": "e50f059d6587cf59417e6665552cd8a20f23536287595110efc493c339383490",
+      "weights.npz": "2ee78accac903c3c01404367d1aa5213e439beb3428d41fe1222512d48b63fe8"
+    },
+    "cf_ids_sha256": "3af1b5d3f748e94243252390f708eb6a451dfafd6cdaf71fbe3303939e0aa032",
+    "legacy_primary_cap": 300,
+    "legacy_temporal_overlap_count": 32,
+    "original_test_users": 40140,
+    "remaining_unexposed_test_users": 38789,
+    "available_by_history": {
+      "0": 35617,
+      "1": 14971,
+      "10": 697,
+      "100": 0,
+      "20": 51,
+      "3": 5465,
+      "5": 2650,
+      "50": 0
+    },
+    "selection": "ascending SHA256(fresh-user-v2:seed:user_id), positive remainder after chronological eligible-item prefix",
+    "candidate_strategy": "all original training-selected CF items excluding support; no sampled negatives",
+    "model_selection": "forbidden on these cohorts; validation users only until all configurations frozen",
+    "scope": "new unscored users in fixed bounded historical-review test split; not an independent new dataset",
+    "protocol_sha256": "7fbc64536849ba16d71cf8e2315034c32488ab466b6801e6d8134614a1c2e4d6",
+    "legacy_exposed_users": 1351,
+    "selected_by_history": {
+      "0": 500,
+      "1": 500,
+      "10": 500,
+      "100": 0,
+      "20": 51,
+      "3": 500,
+      "5": 500,
+      "50": 0
+    }
+  },
+  "frozen_config": {
+    "protocol_sha256": "7fbc64536849ba16d71cf8e2315034c32488ab466b6801e6d8134614a1c2e4d6",
+    "selection_source": "validation-only; frozen before fresh-user test",
+    "config": {
+      "base_version": "development-1500-42-20261111T004254213166Z",
+      "source_sha256": "e873ed8dc766549b66d69496a6580d38242fa84786f6ce029609241b94e0a76f",
+      "content_manifest_sha256": "6f0884010d64fafd89c1fd63ee8c9ebeac836aa99498b4e959b511405c0e133a",
+      "content_selected": "projection",
+      "blend": {
+        "format_version": 1,
+        "names": [
+          "baseline",
+          "tags",
+          "description",
+          "projection",
+          "approval",
+          "itemknn",
+          "logpopularity"
+        ],
+        "weights": [
+          0.8999999761581421,
+          0.05000000074505806,
+          0.0,
+          0.0,
+          0.0,
+          0.05000000074505806,
+          0.0
+        ],
+        "metadata": {
+          "objective": "validation NDCG@20",
+          "validation_ndcg@20": 0.09919370635815822,
+          "trials": 61,
+          "ranking_scores_not_probabilities": true,
+          "base_version": "development-1500-42-20261111T004254213166Z",
+          "source_sha256": "e873ed8dc766549b66d69496a6580d38242fa84786f6ce029609241b94e0a76f",
+          "content_manifest_sha256": "6f0884010d64fafd89c1fd63ee8c9ebeac836aa99498b4e959b511405c0e133a",
+          "approval_strength": 20,
+          "validation_queries": 450,
+          "baseline_validation_ndcg@20": 0.09918112966290303,
+          "minimum_validation_gain_for_default": 0.001,
+          "validation_gain": 1.257669525518701e-05,
+          "default_promotion_approved": false,
+          "normalization_reference": "original CF item universe before filtering/retrieval",
+          "retrieval_per_channel": 200
+        }
+      },
+      "mixed": {
+        "schema_version": 1,
+        "algorithm": "ease",
+        "weighting": "normalized_log1p_hours",
+        "coefficient": 1.0,
+        "base_model_version": "development-1500-42-20261111T004254213166Z",
+        "dataset_sha256": "e873ed8dc766549b66d69496a6580d38242fa84786f6ce029609241b94e0a76f",
+        "selection_objective": "pooled validation NDCG@20; total supportN5/10/20, explicitk1/3; first100 eligible validation users/group",
+        "scope": "reviewed-game histories as library proxy; snapshot hours; no test scoring",
+        "test_status": "not scored; awaiting prospectively frozen fresh-user protocol"
+      },
+      "neural": {
+        "format_version": 1,
+        "selection_phase": "validation_only",
+        "test_scored": false,
+        "source_model": "LightGCN",
+        "config": {
+          "method": "logistic",
+          "normalization": "none",
+          "regularization": 10.0,
+          "negative_weight": 1.0,
+          "max_iterations": 100
+        },
+        "population_source_sha256": "e873ed8dc766549b66d69496a6580d38242fa84786f6ce029609241b94e0a76f",
+        "factor_sha256": "7e4c92b3aad841486c1fd7de2e36a443756c1de471ef5b0f7e619e2223da53e9",
+        "atomic_export_sha256": "a53d2aefa253095b6f4d384b85d858f6dd1b701d0dba489614df4eb073007a96",
+        "candidate_ids_sha256": "fbe7e8ff0093af67a360072bf814fd1a75c454289673c2a503405e48eaf5d0ac",
+        "cf_game_ids": [
+          "steam:440",
+          "steam:252490",
+          "steam:730",
+          "steam:292030",
+          "steam:431960",
+          "steam:570",
+          "steam:444090",
+          "steam:374320",
+          "steam:550",
+          "steam:359550",
+          "steam:377160",
+          "steam:227300",
+          "steam:1091500",
+          "steam:1085660",
+          "steam:945360",
+          "steam:49520",
+          "steam:304930",
+          "steam:242760",
+          "steam:4000",
+          "steam:291550",
+          "steam:346110",
+          "steam:1174180",
+          "steam:1172620",
+          "steam:289070",
+          "steam:275850",
+          "steam:238960",
+          "steam:105600",
+          "steam:394360",
+          "steam:107410",
+          "steam:284160",
+          "steam:230410",
+          "steam:255710",
+          "steam:271590",
+          "steam:218620",
+          "steam:620",
+          "steam:250900",
+          "steam:203160",
+          "steam:477160",
+          "steam:960090",
+          "steam:427520",
+          "steam:1293830",
+          "steam:261550",
+          "steam:1145360",
+          "steam:270880",
+          "steam:294100",
+          "steam:526870",
+          "steam:22380",
+          "steam:319630",
+          "steam:322330",
+          "steam:244850",
+          "steam:240",
+          "steam:1599340",
+          "steam:674940",
+          "steam:379720",
+          "steam:435150",
+          "steam:700330",
+          "steam:220200",
+          "steam:646570",
+          "steam:220",
+          "steam:518790",
+          "steam:48700",
+          "steam:108600",
+          "steam:239140",
+          "steam:814380",
+          "steam:548430",
+          "steam:232090",
+          "steam:262060",
+          "steam:1172470",
+          "steam:524220",
+          "steam:1782210",
+          "steam:367520",
+          "steam:581320",
+          "steam:225540",
+          "steam:397540",
+          "steam:1238810",
+          "steam:976730",
+          "steam:311210",
+          "steam:221100",
+          "steam:12210",
+          "steam:1426210",
+          "steam:8930",
+          "steam:238320",
+          "steam:632360",
+          "steam:361420",
+          "steam:1245620",
+          "steam:552520",
+          "steam:304390",
+          "steam:306130",
+          "steam:381210",
+          "steam:251570",
+          "steam:782330",
+          "steam:413150",
+          "steam:1092790",
+          "steam:594650",
+          "steam:305620",
+          "steam:8870",
+          "steam:70",
+          "steam:812140",
+          "steam:1057090",
+          "steam:387990",
+          "steam:433340",
+          "steam:620980",
+          "steam:204360",
+          "steam:1063730",
+          "steam:1938090",
+          "steam:3590",
+          "steam:1332010",
+          "steam:304050",
+          "steam:391540",
+          "steam:1238840",
+          "steam:438100",
+          "steam:444200",
+          "steam:1217060",
+          "steam:205100",
+          "steam:1172380",
+          "steam:203770",
+          "steam:335300",
+          "steam:359320",
+          "steam:739630",
+          "steam:1468810",
+          "steam:883710",
+          "steam:629760",
+          "steam:400",
+          "steam:578080",
+          "steam:323190",
+          "steam:504230",
+          "steam:393380",
+          "steam:686810",
+          "steam:236390",
+          "steam:412020",
+          "steam:1237970",
+          "steam:534380",
+          "steam:39210",
+          "steam:489830",
+          "steam:386360",
+          "steam:1794680",
+          "steam:613100",
+          "steam:219740",
+          "steam:264710",
+          "steam:219150",
+          "steam:1222670",
+          "steam:391220",
+          "steam:223470",
+          "steam:389730",
+          "steam:787860",
+          "steam:1144200",
+          "steam:1046930",
+          "steam:362890",
+          "steam:774171",
+          "steam:220240",
+          "steam:349040",
+          "steam:219990",
+          "steam:235460",
+          "steam:582010",
+          "steam:431240",
+          "steam:1151340",
+          "steam:457140",
+          "steam:552990",
+          "steam:588650",
+          "steam:1118200",
+          "steam:233860",
+          "steam:239030",
+          "steam:268910",
+          "steam:365590",
+          "steam:438740",
+          "steam:714010",
+          "steam:282070",
+          "steam:1240440",
+          "steam:379430",
+          "steam:208650",
+          "steam:460930",
+          "steam:376210",
+          "steam:552500",
+          "steam:311690",
+          "steam:648800",
+          "steam:513710",
+          "steam:424840",
+          "steam:594570",
+          "steam:582160",
+          "steam:10",
+          "steam:635260",
+          "steam:331470",
+          "steam:238460",
+          "steam:1551360",
+          "steam:287700",
+          "steam:200510",
+          "steam:1086940",
+          "steam:1196590",
+          "steam:20920",
+          "steam:546560",
+          "steam:403640",
+          "steam:489520",
+          "steam:588430",
+          "steam:1625450",
+          "steam:1593500",
+          "steam:504370",
+          "steam:1286830",
+          "steam:440900",
+          "steam:244210",
+          "steam:678950",
+          "steam:55230",
+          "steam:582660",
+          "steam:236850",
+          "steam:418370",
+          "steam:356190",
+          "steam:286690",
+          "steam:418460",
+          "steam:750920",
+          "steam:254700",
+          "steam:233450",
+          "steam:570940",
+          "steam:206420",
+          "steam:779340",
+          "steam:1151640",
+          "steam:823130",
+          "steam:221380",
+          "steam:1167630",
+          "steam:1229490",
+          "steam:261570",
+          "steam:206440",
+          "steam:246620",
+          "steam:1030840",
+          "steam:447040",
+          "steam:848450",
+          "steam:703080",
+          "steam:646910",
+          "steam:976310",
+          "steam:241930",
+          "steam:207610",
+          "steam:629520",
+          "steam:1404210",
+          "steam:286160",
+          "steam:234140",
+          "steam:291480",
+          "steam:638970",
+          "steam:1250",
+          "steam:1817070",
+          "steam:214490",
+          "steam:231430",
+          "steam:493340",
+          "steam:224260",
+          "steam:274170",
+          "steam:460950",
+          "steam:629730",
+          "steam:363970",
+          "steam:815370",
+          "steam:307780",
+          "steam:1113000",
+          "steam:20900",
+          "steam:466560",
+          "steam:680420",
+          "steam:480490",
+          "steam:1506830",
+          "steam:218230",
+          "steam:287390",
+          "steam:211820",
+          "steam:200210",
+          "steam:1604030",
+          "steam:493520",
+          "steam:1274570",
+          "steam:334230",
+          "steam:50300",
+          "steam:213670",
+          "steam:813780",
+          "steam:383870",
+          "steam:1517290",
+          "steam:307690",
+          "steam:1222140",
+          "steam:1238860",
+          "steam:621060",
+          "steam:678960",
+          "steam:253230",
+          "steam:602960",
+          "steam:1222700",
+          "steam:1677740",
+          "steam:274190",
+          "steam:880940",
+          "steam:823500",
+          "steam:261640",
+          "steam:1158310",
+          "steam:8190",
+          "steam:386180",
+          "steam:200260",
+          "steam:698780",
+          "steam:113200",
+          "steam:6060",
+          "steam:212680",
+          "steam:221910",
+          "steam:244450",
+          "steam:683320",
+          "steam:333930",
+          "steam:219640",
+          "steam:508440",
+          "steam:1139900",
+          "steam:761890",
+          "steam:632470",
+          "steam:242050",
+          "steam:636480",
+          "steam:50130",
+          "steam:1366540",
+          "steam:240720",
+          "steam:881100",
+          "steam:380600",
+          "steam:326460",
+          "steam:10180",
+          "steam:728880",
+          "steam:617290",
+          "steam:500",
+          "steam:454650",
+          "steam:346900",
+          "steam:387290",
+          "steam:1250410",
+          "steam:4500",
+          "steam:752590",
+          "steam:22330",
+          "steam:268500",
+          "steam:644930",
+          "steam:221040",
+          "steam:414700",
+          "steam:1259420",
+          "steam:42700",
+          "steam:1313140",
+          "steam:633230",
+          "steam:1384160",
+          "steam:298110",
+          "steam:892970",
+          "steam:322170",
+          "steam:414340",
+          "steam:1290000",
+          "steam:952060",
+          "steam:10090",
+          "steam:22370",
+          "steam:48000",
+          "steam:1328670",
+          "steam:201810",
+          "steam:289650",
+          "steam:35140",
+          "steam:202970",
+          "steam:312660",
+          "steam:222880",
+          "steam:364360",
+          "steam:977950",
+          "steam:495420",
+          "steam:383980",
+          "steam:1237950",
+          "steam:1449850",
+          "steam:204100",
+          "steam:1248130",
+          "steam:346010",
+          "steam:1407200",
+          "steam:1454400",
+          "steam:1142710",
+          "steam:824270",
+          "steam:21690",
+          "steam:304430",
+          "steam:851850",
+          "steam:994280",
+          "steam:33230",
+          "steam:203140",
+          "steam:573090",
+          "steam:1446780",
+          "steam:214950",
+          "steam:42680",
+          "steam:239820",
+          "steam:470220",
+          "steam:1466860",
+          "steam:265930",
+          "steam:884660",
+          "steam:108710",
+          "steam:516750",
+          "steam:1089980",
+          "steam:365670",
+          "steam:871720",
+          "steam:1325200",
+          "steam:223710",
+          "steam:645630",
+          "steam:657200",
+          "steam:35450",
+          "steam:637650",
+          "steam:555160",
+          "steam:17390",
+          "steam:601150",
+          "steam:204300",
+          "steam:409710",
+          "steam:47890",
+          "steam:502500",
+          "steam:17410",
+          "steam:527230",
+          "steam:753640",
+          "steam:209000",
+          "steam:22320",
+          "steam:24240",
+          "steam:225080",
+          "steam:312530",
+          "steam:207140",
+          "steam:269210",
+          "steam:420",
+          "steam:471710",
+          "steam:690790",
+          "steam:466240",
+          "steam:310950",
+          "steam:322500",
+          "steam:383120",
+          "steam:972660",
+          "steam:265630",
+          "steam:434570",
+          "steam:301520",
+          "steam:107100",
+          "steam:967050",
+          "steam:747660",
+          "steam:1418630",
+          "steam:427730",
+          "steam:447530",
+          "steam:597170",
+          "steam:285900",
+          "steam:386940",
+          "steam:485510",
+          "steam:1483870",
+          "steam:501300",
+          "steam:599140",
+          "steam:552100",
+          "steam:1288310",
+          "steam:760160",
+          "steam:433850",
+          "steam:666140",
+          "steam:751780",
+          "steam:282140",
+          "steam:677620",
+          "steam:1150690",
+          "steam:1178830",
+          "steam:236430",
+          "steam:274940",
+          "steam:843380",
+          "steam:17470",
+          "steam:648350",
+          "steam:278360",
+          "steam:962130",
+          "steam:325610",
+          "steam:33930",
+          "steam:243470",
+          "steam:668630",
+          "steam:266840",
+          "steam:333600",
+          "steam:1203220",
+          "steam:601510",
+          "steam:204450",
+          "steam:417860",
+          "steam:774361",
+          "steam:8500",
+          "steam:740130",
+          "steam:860510",
+          "steam:420290",
+          "steam:641990",
+          "steam:1147560",
+          "steam:1721470",
+          "steam:337320",
+          "steam:393420",
+          "steam:8980",
+          "steam:413420",
+          "steam:557340",
+          "steam:55150",
+          "steam:1289310",
+          "steam:230290",
+          "steam:302510",
+          "steam:314160",
+          "steam:589290",
+          "steam:313120",
+          "steam:638230",
+          "steam:200710",
+          "steam:464920",
+          "steam:253710",
+          "steam:755790",
+          "steam:1049410",
+          "steam:418240",
+          "steam:692850",
+          "steam:1419170",
+          "steam:40800",
+          "steam:4700",
+          "steam:870780",
+          "steam:933110",
+          "steam:1213210",
+          "steam:805550",
+          "steam:32470",
+          "steam:413410",
+          "steam:868270",
+          "steam:394510",
+          "steam:420530",
+          "steam:1811260",
+          "steam:12200",
+          "steam:611500",
+          "steam:612880",
+          "steam:905370",
+          "steam:225840",
+          "steam:221640",
+          "steam:438040",
+          "steam:221680",
+          "steam:1128810",
+          "steam:1049590",
+          "steam:291650",
+          "steam:380",
+          "steam:920210",
+          "steam:319510",
+          "steam:337000",
+          "steam:57300",
+          "steam:1252330",
+          "steam:1235140",
+          "steam:323850",
+          "steam:460920",
+          "steam:220440",
+          "steam:285920",
+          "steam:282800",
+          "steam:554620",
+          "steam:1361210",
+          "steam:1987080",
+          "steam:238010",
+          "steam:232430",
+          "steam:245170",
+          "steam:1222680",
+          "steam:233130",
+          "steam:261030",
+          "steam:228380",
+          "steam:41070",
+          "steam:368500",
+          "steam:766570",
+          "steam:213610",
+          "steam:736260",
+          "steam:299740",
+          "steam:675010",
+          "steam:109600",
+          "steam:34330",
+          "steam:1113560",
+          "steam:250320",
+          "steam:474960",
+          "steam:844870",
+          "steam:246900",
+          "steam:360430",
+          "steam:488790",
+          "steam:110800",
+          "steam:392110",
+          "steam:895400",
+          "steam:532210",
+          "steam:601430",
+          "steam:794260",
+          "steam:281990",
+          "steam:248820",
+          "steam:385800",
+          "steam:475550",
+          "steam:444640",
+          "steam:674020",
+          "steam:505460",
+          "steam:1149460",
+          "steam:1703340",
+          "steam:223750",
+          "steam:903950",
+          "steam:992300",
+          "steam:1206560",
+          "steam:1621690",
+          "steam:42910",
+          "steam:553640",
+          "steam:9900",
+          "steam:335240",
+          "steam:365450",
+          "steam:745920",
+          "steam:41700",
+          "steam:242920",
+          "steam:460790",
+          "steam:237930",
+          "steam:242860",
+          "steam:268050",
+          "steam:996580",
+          "steam:704850",
+          "steam:247080",
+          "steam:1056640",
+          "steam:476600",
+          "steam:257510",
+          "steam:383150",
+          "steam:113400",
+          "steam:1369630",
+          "steam:1455840",
+          "steam:104900",
+          "steam:567640",
+          "steam:1557740",
+          "steam:248570",
+          "steam:324800",
+          "steam:280790",
+          "steam:367500",
+          "steam:371660",
+          "steam:459820",
+          "steam:1184370",
+          "steam:834530",
+          "steam:475150",
+          "steam:238090",
+          "steam:105450",
+          "steam:582500",
+          "steam:872200",
+          "steam:924970",
+          "steam:373420",
+          "steam:260230",
+          "steam:365360",
+          "steam:1282730",
+          "steam:362930",
+          "steam:434650",
+          "steam:447020",
+          "steam:1533390",
+          "steam:206190",
+          "steam:1359090",
+          "steam:641320",
+          "steam:1017180",
+          "steam:493490",
+          "steam:701160",
+          "steam:939960",
+          "steam:1824220",
+          "steam:210970",
+          "steam:731490",
+          "steam:7940",
+          "steam:1190000",
+          "steam:317400",
+          "steam:491950",
+          "steam:80",
+          "steam:1343370",
+          "steam:250600",
+          "steam:1687950",
+          "steam:412830",
+          "steam:1088850",
+          "steam:35720",
+          "steam:394690",
+          "steam:1509960",
+          "steam:1408720",
+          "steam:250400",
+          "steam:406150",
+          "steam:774861",
+          "steam:1241510",
+          "steam:237990",
+          "steam:391720",
+          "steam:535930",
+          "steam:787480",
+          "steam:960170",
+          "steam:1451940",
+          "steam:1244460",
+          "steam:1465360",
+          "steam:99900",
+          "steam:384190",
+          "steam:1222730",
+          "steam:512900",
+          "steam:563560",
+          "steam:288160",
+          "steam:704270",
+          "steam:1189630",
+          "steam:341800",
+          "steam:418530",
+          "steam:555570",
+          "steam:1062090",
+          "steam:1281930",
+          "steam:445980",
+          "steam:47780",
+          "steam:571740",
+          "steam:1124300",
+          "steam:292730",
+          "steam:1307550",
+          "steam:447820",
+          "steam:560130",
+          "steam:738060",
+          "steam:12900",
+          "steam:368230",
+          "steam:528230",
+          "steam:927380",
+          "steam:1590320",
+          "steam:509980",
+          "steam:837470",
+          "steam:584400",
+          "steam:302830",
+          "steam:236110",
+          "steam:313340",
+          "steam:410900",
+          "steam:1127400",
+          "steam:32370",
+          "steam:67370",
+          "steam:1096530",
+          "steam:1291340",
+          "steam:1343400",
+          "steam:392160",
+          "steam:979690",
+          "steam:1388880",
+          "steam:450540",
+          "steam:71340",
+          "steam:20510",
+          "steam:544920",
+          "steam:1657630",
+          "steam:259080",
+          "steam:301640",
+          "steam:519860",
+          "steam:1066780",
+          "steam:1568590",
+          "steam:32440",
+          "steam:673950",
+          "steam:1062520",
+          "steam:1262580",
+          "steam:48190",
+          "steam:1094520",
+          "steam:1392820",
+          "steam:1948280",
+          "steam:212480",
+          "steam:39140",
+          "steam:424280",
+          "steam:559650",
+          "steam:302670",
+          "steam:611790",
+          "steam:991780",
+          "steam:228300",
+          "steam:630",
+          "steam:287290",
+          "steam:47870",
+          "steam:626690",
+          "steam:774181",
+          "steam:242700",
+          "steam:544810",
+          "steam:249130",
+          "steam:367450",
+          "steam:640820",
+          "steam:10500",
+          "steam:1727650",
+          "steam:517630",
+          "steam:50",
+          "steam:228200",
+          "steam:788100",
+          "steam:834910",
+          "steam:1144400",
+          "steam:50620",
+          "steam:374040",
+          "steam:420110",
+          "steam:706990",
+          "steam:312990",
+          "steam:578310",
+          "steam:783770",
+          "steam:1966900",
+          "steam:239160",
+          "steam:300",
+          "steam:1178490",
+          "steam:283640",
+          "steam:350080",
+          "steam:304240",
+          "steam:372000",
+          "steam:622650",
+          "steam:997070",
+          "steam:960990",
+          "steam:1397920",
+          "steam:568220",
+          "steam:602520",
+          "steam:1382330",
+          "steam:866800",
+          "steam:1240210",
+          "steam:1468260",
+          "steam:1490890",
+          "steam:34870",
+          "steam:627690",
+          "steam:729040",
+          "steam:298630",
+          "steam:953490",
+          "steam:1549970",
+          "steam:225260",
+          "steam:429660",
+          "steam:603850",
+          "steam:955900",
+          "steam:1241100",
+          "steam:330830",
+          "steam:337340",
+          "steam:266510",
+          "steam:34030",
+          "steam:395170",
+          "steam:397900",
+          "steam:492720",
+          "steam:627270",
+          "steam:569480",
+          "steam:858820",
+          "steam:47810",
+          "steam:969990",
+          "steam:24200",
+          "steam:464060",
+          "steam:9480",
+          "steam:239350",
+          "steam:2990",
+          "steam:453480",
+          "steam:503560",
+          "steam:1085510",
+          "steam:1097840",
+          "steam:1832640",
+          "steam:264200",
+          "steam:397950",
+          "steam:531510",
+          "steam:65800",
+          "steam:1016920",
+          "steam:1258080",
+          "steam:1520470",
+          "steam:233720",
+          "steam:236090",
+          "steam:303210",
+          "steam:495890",
+          "steam:942970",
+          "steam:1129580",
+          "steam:1210320",
+          "steam:1466640",
+          "steam:15100",
+          "steam:22300",
+          "steam:242680",
+          "steam:744900",
+          "steam:529340",
+          "steam:667970",
+          "steam:10680",
+          "steam:108800",
+          "steam:1256670",
+          "steam:130",
+          "steam:16900",
+          "steam:201790",
+          "steam:209160",
+          "steam:617670",
+          "steam:780310",
+          "steam:288470",
+          "steam:355180",
+          "steam:38400",
+          "steam:544750",
+          "steam:1255980",
+          "steam:235540",
+          "steam:235600",
+          "steam:241600",
+          "steam:383080",
+          "steam:24010",
+          "steam:732690",
+          "steam:204340",
+          "steam:469820",
+          "steam:655500",
+          "steam:997010",
+          "steam:653530",
+          "steam:1149620",
+          "steam:208580",
+          "steam:293760",
+          "steam:323470",
+          "steam:585420",
+          "steam:17460",
+          "steam:250760",
+          "steam:278080",
+          "steam:297130",
+          "steam:35700",
+          "steam:1435790",
+          "steam:405640",
+          "steam:859570",
+          "steam:2280",
+          "steam:299360",
+          "steam:977400",
+          "steam:1942280",
+          "steam:409720",
+          "steam:462780",
+          "steam:597220",
+          "steam:1022450",
+          "steam:1476970",
+          "steam:34900",
+          "steam:377840",
+          "steam:400910",
+          "steam:607080",
+          "steam:70000",
+          "steam:300380",
+          "steam:329050",
+          "steam:339610",
+          "steam:428550",
+          "steam:1029780",
+          "steam:1239690",
+          "steam:1276390",
+          "steam:1230140",
+          "steam:1302240",
+          "steam:209080",
+          "steam:21090",
+          "steam:270150",
+          "steam:3830",
+          "steam:448510",
+          "steam:557600",
+          "steam:812810",
+          "steam:1061090",
+          "steam:736190",
+          "steam:962730",
+          "steam:1714040",
+          "steam:40970",
+          "steam:865360",
+          "steam:359870",
+          "steam:425580",
+          "steam:65930",
+          "steam:765410",
+          "steam:219890",
+          "steam:1254120",
+          "steam:1665460",
+          "steam:311560",
+          "steam:1237320",
+          "steam:39000",
+          "steam:583950",
+          "steam:813820",
+          "steam:851100",
+          "steam:1102190",
+          "steam:262410",
+          "steam:282900",
+          "steam:332800",
+          "steam:804320",
+          "steam:955050",
+          "steam:1161580",
+          "steam:1262560",
+          "steam:410320",
+          "steam:113020",
+          "steam:1135690",
+          "steam:311340",
+          "steam:6910",
+          "steam:1401590",
+          "steam:1961460",
+          "steam:861650",
+          "steam:1211020",
+          "steam:12140",
+          "steam:1462040",
+          "steam:1533420",
+          "steam:1850570",
+          "steam:210770",
+          "steam:241560",
+          "steam:313160",
+          "steam:360940",
+          "steam:493900",
+          "steam:9200",
+          "steam:201870",
+          "steam:224760",
+          "steam:251990",
+          "steam:368340",
+          "steam:388410",
+          "steam:1361000",
+          "steam:204880",
+          "steam:209650",
+          "steam:340",
+          "steam:341940",
+          "steam:736220",
+          "steam:216150",
+          "steam:233290",
+          "steam:427290",
+          "steam:48720",
+          "steam:780290",
+          "steam:899770",
+          "steam:1046030",
+          "steam:332950",
+          "steam:351640",
+          "steam:351920",
+          "steam:360740",
+          "steam:428690",
+          "steam:533300",
+          "steam:681280",
+          "steam:1106840",
+          "steam:1277400",
+          "steam:320",
+          "steam:924140",
+          "steam:1522820",
+          "steam:1584090",
+          "steam:269950",
+          "steam:555220",
+          "steam:965200",
+          "steam:975370",
+          "steam:1030830",
+          "steam:1583720",
+          "steam:2087030",
+          "steam:223850",
+          "steam:265550",
+          "steam:536220",
+          "steam:578650",
+          "steam:7670",
+          "steam:767560",
+          "steam:773951",
+          "steam:1233570",
+          "steam:251060",
+          "steam:424030",
+          "steam:1007040",
+          "steam:214510",
+          "steam:233270",
+          "steam:282440",
+          "steam:443810",
+          "steam:515180",
+          "steam:597820",
+          "steam:1127500",
+          "steam:1526490",
+          "steam:19900",
+          "steam:241540",
+          "steam:270550",
+          "steam:382310",
+          "steam:391460",
+          "steam:39500",
+          "steam:40990",
+          "steam:248610",
+          "steam:257850",
+          "steam:273110",
+          "steam:274520",
+          "steam:330020",
+          "steam:356670",
+          "steam:424370",
+          "steam:9420",
+          "steam:1069740",
+          "steam:1276790",
+          "steam:1599600",
+          "steam:280160",
+          "steam:1084600",
+          "steam:1119730",
+          "steam:1121910",
+          "steam:115320",
+          "steam:1604000",
+          "steam:265300",
+          "steam:408900",
+          "steam:446800",
+          "steam:637090",
+          "steam:211500",
+          "steam:212500",
+          "steam:287980",
+          "steam:332310",
+          "steam:434170",
+          "steam:453090",
+          "steam:882790",
+          "steam:1049800",
+          "steam:1922560",
+          "steam:39510",
+          "steam:40700",
+          "steam:42960",
+          "steam:973760",
+          "steam:238370",
+          "steam:437920",
+          "steam:1421250",
+          "steam:234670",
+          "steam:384300",
+          "steam:590380",
+          "steam:609320",
+          "steam:65540",
+          "steam:8850",
+          "steam:1406990",
+          "steam:215530",
+          "steam:289130",
+          "steam:301910",
+          "steam:359050",
+          "steam:682990",
+          "steam:859580",
+          "steam:1136160",
+          "steam:1227890",
+          "steam:1229380",
+          "steam:238430",
+          "steam:290080",
+          "steam:473690",
+          "steam:589870",
+          "steam:70300",
+          "steam:985890",
+          "steam:1173690",
+          "steam:1238000",
+          "steam:335670",
+          "steam:366090",
+          "steam:6000",
+          "steam:411300",
+          "steam:481510",
+          "steam:537800",
+          "steam:9450",
+          "steam:1111460",
+          "steam:212160",
+          "steam:459220",
+          "steam:601220",
+          "steam:1216710",
+          "steam:1644960",
+          "steam:614570",
+          "steam:1180380",
+          "steam:389570",
+          "steam:498240",
+          "steam:593280",
+          "steam:699130",
+          "steam:71250",
+          "steam:814540",
+          "steam:1012880",
+          "steam:1102130",
+          "steam:268130",
+          "steam:339340",
+          "steam:6020",
+          "steam:1093910",
+          "steam:1262540",
+          "steam:1273710",
+          "steam:1919590",
+          "steam:212070",
+          "steam:227940",
+          "steam:297000",
+          "steam:362680",
+          "steam:368070",
+          "steam:489940",
+          "steam:625960",
+          "steam:686200",
+          "steam:792220",
+          "steam:921570",
+          "steam:1048540",
+          "steam:1475810",
+          "steam:431730",
+          "steam:4570",
+          "steam:690040",
+          "steam:980610",
+          "steam:1055540",
+          "steam:211400",
+          "steam:222480",
+          "steam:245550",
+          "steam:290340",
+          "steam:342180",
+          "steam:350640",
+          "steam:409160",
+          "steam:12220",
+          "steam:1789480",
+          "steam:221260",
+          "steam:246420",
+          "steam:312520",
+          "steam:386070",
+          "steam:423230",
+          "steam:449960",
+          "steam:548570",
+          "steam:813630",
+          "steam:838350",
+          "steam:882100",
+          "steam:374280",
+          "steam:469600",
+          "steam:508900",
+          "steam:541570",
+          "steam:56400",
+          "steam:1388770",
+          "steam:1969870",
+          "steam:258520",
+          "steam:2600",
+          "steam:361280",
+          "steam:38410",
+          "steam:485610",
+          "steam:55100",
+          "steam:562220",
+          "steam:667530",
+          "steam:707010",
+          "steam:732430",
+          "steam:760060",
+          "steam:239070",
+          "steam:1137460",
+          "steam:280",
+          "steam:394310",
+          "steam:40100",
+          "steam:488860",
+          "steam:494840",
+          "steam:1816670",
+          "steam:317360",
+          "steam:763890",
+          "steam:218680",
+          "steam:249050",
+          "steam:586140",
+          "steam:601840",
+          "steam:631510",
+          "steam:1189490",
+          "steam:16450",
+          "steam:1692250",
+          "steam:1761390",
+          "steam:21130",
+          "steam:278970",
+          "steam:287450",
+          "steam:292120",
+          "steam:294860",
+          "steam:1214280",
+          "steam:1496790",
+          "steam:17480",
+          "steam:257420",
+          "steam:323320",
+          "steam:344760",
+          "steam:368360",
+          "steam:606880",
+          "steam:847370",
+          "steam:977880",
+          "steam:1341290",
+          "steam:206500",
+          "steam:327410",
+          "steam:45760",
+          "steam:690640",
+          "steam:719040",
+          "steam:746850",
+          "steam:1318690",
+          "steam:388880",
+          "steam:894020",
+          "steam:1201240",
+          "steam:2310",
+          "steam:397340",
+          "steam:418340",
+          "steam:584980",
+          "steam:6860",
+          "steam:784150",
+          "steam:1285670",
+          "steam:1349230",
+          "steam:375480",
+          "steam:4920",
+          "steam:520440",
+          "steam:527430",
+          "steam:814370",
+          "steam:10150",
+          "steam:1044720",
+          "steam:1089090",
+          "steam:1147690",
+          "steam:1262240",
+          "steam:253430",
+          "steam:327030",
+          "steam:329110",
+          "steam:496300",
+          "steam:617830",
+          "steam:792300",
+          "steam:960910",
+          "steam:1126290",
+          "steam:1592190",
+          "steam:1817190",
+          "steam:397060",
+          "steam:398850",
+          "steam:474750",
+          "steam:604240",
+          "steam:629820",
+          "steam:775500",
+          "steam:784080",
+          "steam:1335200",
+          "steam:1985690",
+          "steam:21000",
+          "steam:22100",
+          "steam:232890",
+          "steam:266010",
+          "steam:324160",
+          "steam:34270",
+          "steam:365300",
+          "steam:410340",
+          "steam:4760",
+          "steam:589780",
+          "steam:605740",
+          "steam:606150",
+          "steam:777130",
+          "steam:1520370",
+          "steam:1559390",
+          "steam:234650",
+          "steam:252530",
+          "steam:388090",
+          "steam:435400",
+          "steam:521890",
+          "steam:606280",
+          "steam:753650",
+          "steam:985810",
+          "steam:1544020",
+          "steam:1571440",
+          "steam:232910",
+          "steam:252870",
+          "steam:275390",
+          "steam:423880",
+          "steam:57690",
+          "steam:611660",
+          "steam:611670",
+          "steam:950670",
+          "steam:214340",
+          "steam:222940",
+          "steam:306020",
+          "steam:360170",
+          "steam:743450",
+          "steam:19680",
+          "steam:347620",
+          "steam:351940",
+          "steam:374570",
+          "steam:382490",
+          "steam:489630",
+          "steam:523780",
+          "steam:666220",
+          "steam:738520",
+          "steam:1158940",
+          "steam:1182620",
+          "steam:218640",
+          "steam:244930",
+          "steam:253250",
+          "steam:285160",
+          "steam:296470",
+          "steam:320240",
+          "steam:49600",
+          "steam:559210",
+          "steam:714120",
+          "steam:918570",
+          "steam:1021950",
+          "steam:1170950",
+          "steam:12150",
+          "steam:1366800",
+          "steam:1372280",
+          "steam:1449690",
+          "steam:1659040",
+          "steam:228280",
+          "steam:356570",
+          "steam:501590",
+          "steam:598700",
+          "steam:803330",
+          "steam:1082430",
+          "steam:1267910",
+          "steam:1390350",
+          "steam:21100",
+          "steam:248390",
+          "steam:250180",
+          "steam:256290",
+          "steam:268650",
+          "steam:329430",
+          "steam:506610",
+          "steam:704450",
+          "steam:707030",
+          "steam:764790",
+          "steam:900270",
+          "steam:1147550",
+          "steam:115800",
+          "steam:1170880",
+          "steam:1284190",
+          "steam:1549180",
+          "steam:1577120",
+          "steam:203290",
+          "steam:236450",
+          "steam:26800",
+          "steam:430960",
+          "steam:550650",
+          "steam:610370",
+          "steam:616560",
+          "steam:895870",
+          "steam:1286350",
+          "steam:223100",
+          "steam:235800",
+          "steam:252330",
+          "steam:48240",
+          "steam:658850",
+          "steam:1122720",
+          "steam:1140270",
+          "steam:1301720",
+          "steam:1361320",
+          "steam:248310",
+          "steam:422970",
+          "steam:1016800",
+          "steam:1070710",
+          "steam:1543030",
+          "steam:589360",
+          "steam:799960",
+          "steam:1146630",
+          "steam:1286680",
+          "steam:1672970",
+          "steam:1905180",
+          "steam:20500",
+          "steam:208200",
+          "steam:230230",
+          "steam:233980",
+          "steam:245620",
+          "steam:268750",
+          "steam:363890",
+          "steam:396750",
+          "steam:399810",
+          "steam:745880",
+          "steam:1029550",
+          "steam:1121560",
+          "steam:1766740",
+          "steam:200900",
+          "steam:224480",
+          "steam:234080",
+          "steam:352520",
+          "steam:529180",
+          "steam:536270",
+          "steam:893180",
+          "steam:1611910",
+          "steam:40300",
+          "steam:451020",
+          "steam:451340",
+          "steam:456750",
+          "steam:505230",
+          "steam:633460",
+          "steam:671510",
+          "steam:673130",
+          "steam:936790",
+          "steam:948740",
+          "steam:980300",
+          "steam:226840",
+          "steam:2630",
+          "steam:375950",
+          "steam:438640",
+          "steam:445220",
+          "steam:511470",
+          "steam:607890",
+          "steam:65980",
+          "steam:675260",
+          "steam:1063660",
+          "steam:1064610",
+          "steam:1209040",
+          "steam:1238820",
+          "steam:1282690",
+          "steam:217200",
+          "steam:238210",
+          "steam:253980",
+          "steam:270370",
+          "steam:28000",
+          "steam:427100",
+          "steam:436150",
+          "steam:640590",
+          "steam:9010",
+          "steam:937170",
+          "steam:1090630",
+          "steam:1104450",
+          "steam:1162520",
+          "steam:1488200",
+          "steam:1708870",
+          "steam:446020",
+          "steam:593600",
+          "steam:670290",
+          "steam:891040",
+          "steam:1238060",
+          "steam:1253920",
+          "steam:1281800",
+          "steam:1296610",
+          "steam:2100",
+          "steam:486310",
+          "steam:595520",
+          "steam:916840",
+          "steam:919640",
+          "steam:939850",
+          "steam:1150080",
+          "steam:15620",
+          "steam:1850740",
+          "steam:203750",
+          "steam:206480",
+          "steam:261110",
+          "steam:351970",
+          "steam:367580",
+          "steam:41000",
+          "steam:519190",
+          "steam:665360",
+          "steam:868360",
+          "steam:915320",
+          "steam:1000360",
+          "steam:1105670",
+          "steam:1290490",
+          "steam:1574580",
+          "steam:17500",
+          "steam:208140",
+          "steam:291860",
+          "steam:313740",
+          "steam:318600",
+          "steam:1029690",
+          "steam:1061910",
+          "steam:1070330",
+          "steam:1128920",
+          "steam:1259980",
+          "steam:1536610",
+          "steam:1583320",
+          "steam:220780",
+          "steam:239200",
+          "steam:342200",
+          "steam:352720",
+          "steam:407530",
+          "steam:462770",
+          "steam:588040",
+          "steam:1180660",
+          "steam:1222690",
+          "steam:1284210",
+          "steam:1338770",
+          "steam:1465860",
+          "steam:1527950",
+          "steam:1865370",
+          "steam:242640",
+          "steam:250260",
+          "steam:263060",
+          "steam:357190",
+          "steam:415200",
+          "steam:429790",
+          "steam:578330",
+          "steam:643270",
+          "steam:678800",
+          "steam:718670",
+          "steam:96100",
+          "steam:1173370",
+          "steam:1385380",
+          "steam:272510",
+          "steam:322110",
+          "steam:333420",
+          "steam:368370",
+          "steam:369990",
+          "steam:518030",
+          "steam:861540",
+          "steam:94400",
+          "steam:1049890",
+          "steam:1067310",
+          "steam:1088150",
+          "steam:1504500",
+          "steam:232010",
+          "steam:285190",
+          "steam:323580",
+          "steam:39150",
+          "steam:435530",
+          "steam:47790",
+          "steam:769560",
+          "steam:1008710",
+          "steam:1049100",
+          "steam:1605220",
+          "steam:1659420",
+          "steam:205950",
+          "steam:214770",
+          "steam:30",
+          "steam:518150",
+          "steam:539470",
+          "steam:710920",
+          "steam:858210",
+          "steam:1066890",
+          "steam:1641270",
+          "steam:1810580",
+          "steam:20",
+          "steam:314650",
+          "steam:338170",
+          "steam:378540"
+        ],
+        "seed": 42,
+        "validation_objective": "Pooled validation NDCG@20 at support lengths 1/3/5; first sorted max_users per cohort. Same user may appear in several cohorts.",
+        "score_semantics": "uncalibrated ranking scores, not enjoyment probabilities"
+      },
+      "quality_prior_strength": 20,
+      "quality_mix": 0.05,
+      "retrieval_depth": 200,
+      "prospective_default_decisions": {
+        "global_blend": false,
+        "structured_content_exploration": true,
+        "mixed": true,
+        "neural": false,
+        "mixed_scope": "CF-mapped total evidence5..20, explicit nonneutral1..3; explicit labels override weak observations"
+      },
+      "candidate_strategy": "all original1500CF items excluding support; cold279 subset separately; no sampled negatives"
+    }
+  },
+  "explicit": {
+    "0": {
+      "methods": {
+        "baseline": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.07135562770562771,
+              "ci95": [
+                0.05323314754689754,
+                0.08808318181818181
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.042487484058467105,
+              "ci95": [
+                0.0305921546567586,
+                0.05440139036190213
+              ]
+            },
+            "map@10": {
+              "mean": 0.02528666005291005,
+              "ci95": [
+                0.01731283234126984,
+                0.0336452802579365
+              ]
+            },
+            "recall@20": {
+              "mean": 0.13391120546120544,
+              "ci95": [
+                0.11002944264069263,
+                0.16129640151515148
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.06126760107675749,
+              "ci95": [
+                0.049245130276555395,
+                0.07531484038449222
+              ]
+            },
+            "map@20": {
+              "mean": 0.03005762976426547,
+              "ci95": [
+                0.022030852829509336,
+                0.039410328720941266
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0007000000000000001,
+              "ci95": [
+                0.0002975000000000002,
+                0.0013
+              ]
+            }
+          }
+        },
+        "popularity": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.07135562770562771,
+              "ci95": [
+                0.05323314754689754,
+                0.08808318181818181
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.042487484058467105,
+              "ci95": [
+                0.0305921546567586,
+                0.05440139036190213
+              ]
+            },
+            "map@10": {
+              "mean": 0.02528666005291005,
+              "ci95": [
+                0.01731283234126984,
+                0.0336452802579365
+              ]
+            },
+            "recall@20": {
+              "mean": 0.13391120546120544,
+              "ci95": [
+                0.11002944264069263,
+                0.16129640151515148
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.06126760107675749,
+              "ci95": [
+                0.049245130276555395,
+                0.07531484038449222
+              ]
+            },
+            "map@20": {
+              "mean": 0.03005762976426547,
+              "ci95": [
+                0.022030852829509336,
+                0.039410328720941266
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0007000000000000001,
+              "ci95": [
+                0.0002975000000000002,
+                0.0013
+              ]
+            }
+          }
+        },
+        "blend": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.07135562770562771,
+              "ci95": [
+                0.05323314754689754,
+                0.08808318181818181
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.042487484058467105,
+              "ci95": [
+                0.0305921546567586,
+                0.05440139036190213
+              ]
+            },
+            "map@10": {
+              "mean": 0.02528666005291005,
+              "ci95": [
+                0.01731283234126984,
+                0.0336452802579365
+              ]
+            },
+            "recall@20": {
+              "mean": 0.13391120546120544,
+              "ci95": [
+                0.11002944264069263,
+                0.16129640151515148
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.06126760107675749,
+              "ci95": [
+                0.049245130276555395,
+                0.07531484038449222
+              ]
+            },
+            "map@20": {
+              "mean": 0.03005762976426547,
+              "ci95": [
+                0.022030852829509336,
+                0.039410328720941266
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0007000000000000001,
+              "ci95": [
+                0.0002975000000000002,
+                0.0013
+              ]
+            }
+          }
+        },
+        "blend_retrieved": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.07135562770562771,
+              "ci95": [
+                0.05323314754689754,
+                0.08808318181818181
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.042487484058467105,
+              "ci95": [
+                0.0305921546567586,
+                0.05440139036190213
+              ]
+            },
+            "map@10": {
+              "mean": 0.02528666005291005,
+              "ci95": [
+                0.01731283234126984,
+                0.0336452802579365
+              ]
+            },
+            "recall@20": {
+              "mean": 0.13391120546120544,
+              "ci95": [
+                0.11002944264069263,
+                0.16129640151515148
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.06126760107675749,
+              "ci95": [
+                0.049245130276555395,
+                0.07531484038449222
+              ]
+            },
+            "map@20": {
+              "mean": 0.03005762976426547,
+              "ci95": [
+                0.022030852829509336,
+                0.039410328720941266
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0007000000000000001,
+              "ci95": [
+                0.0002975000000000002,
+                0.0013
+              ]
+            }
+          }
+        },
+        "quality_mix": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.07642316017316017,
+              "ci95": [
+                0.056106177849927844,
+                0.09480012987012985
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.04329447220532932,
+              "ci95": [
+                0.03183134509819921,
+                0.05577287211801105
+              ]
+            },
+            "map@10": {
+              "mean": 0.02469123299319728,
+              "ci95": [
+                0.017212746244331067,
+                0.03277428311602418
+              ]
+            },
+            "recall@20": {
+              "mean": 0.1336556499056499,
+              "ci95": [
+                0.11014232503607502,
+                0.16021630036630036
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.060260211778065925,
+              "ci95": [
+                0.04890305037581678,
+                0.07401491822810405
+              ]
+            },
+            "map@20": {
+              "mean": 0.028948136074707555,
+              "ci95": [
+                0.020825907261058534,
+                0.03808630164883399
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0006000000000000001,
+              "ci95": [
+                0.0002,
+                0.0012
+              ]
+            }
+          }
+        },
+        "foldin": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.07135562770562771,
+              "ci95": [
+                0.05323314754689754,
+                0.08808318181818181
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.042487484058467105,
+              "ci95": [
+                0.0305921546567586,
+                0.05440139036190213
+              ]
+            },
+            "map@10": {
+              "mean": 0.02528666005291005,
+              "ci95": [
+                0.01731283234126984,
+                0.0336452802579365
+              ]
+            },
+            "recall@20": {
+              "mean": 0.13391120546120544,
+              "ci95": [
+                0.11002944264069263,
+                0.16129640151515148
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.06126760107675749,
+              "ci95": [
+                0.049245130276555395,
+                0.07531484038449222
+              ]
+            },
+            "map@20": {
+              "mean": 0.03005762976426547,
+              "ci95": [
+                0.022030852829509336,
+                0.039410328720941266
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0007000000000000001,
+              "ci95": [
+                0.0002975000000000002,
+                0.0013
+              ]
+            }
+          }
+        }
+      },
+      "paired_vs_baseline": {
+        "popularity": {
+          "ndcg@20_delta": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "users": 500
+        },
+        "blend": {
+          "ndcg@20_delta": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "users": 500
+        },
+        "blend_retrieved": {
+          "ndcg@20_delta": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "users": 500
+        },
+        "quality_mix": {
+          "ndcg@20_delta": -0.001007389298691567,
+          "ci95": [
+            -0.003007598462083691,
+            0.0006742063773167205
+          ],
+          "users": 500
+        },
+        "foldin": {
+          "ndcg@20_delta": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "users": 500
+        }
+      },
+      "retrieval_top20_agreement": 1.0
+    },
+    "1": {
+      "methods": {
+        "baseline": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.09932857991681522,
+              "ci95": [
+                0.07852538536626773,
+                0.12381926046176042
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.0661443008255371,
+              "ci95": [
+                0.0526539905487862,
+                0.0827570066173129
+              ]
+            },
+            "map@10": {
+              "mean": 0.0410464947089947,
+              "ci95": [
+                0.029981257275132275,
+                0.053034167658730154
+              ]
+            },
+            "recall@20": {
+              "mean": 0.142446520799462,
+              "ci95": [
+                0.11895447566322566,
+                0.16980419780383016
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.0792127173277085,
+              "ci95": [
+                0.06342847833586378,
+                0.09446290039890218
+              ]
+            },
+            "map@20": {
+              "mean": 0.04393651704737996,
+              "ci95": [
+                0.032615994626296926,
+                0.05559194331144616
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0008,
+              "ci95": [
+                0.00030000000000000003,
+                0.0015
+              ]
+            }
+          }
+        },
+        "popularity": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.057140314913844324,
+              "ci95": [
+                0.0412978370893812,
+                0.07371392835922247
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.0370432082629669,
+              "ci95": [
+                0.02733278143647603,
+                0.04605459322982694
+              ]
+            },
+            "map@10": {
+              "mean": 0.02051595804988662,
+              "ci95": [
+                0.013674897250566894,
+                0.028010542800453512
+              ]
+            },
+            "recall@20": {
+              "mean": 0.10520105352164176,
+              "ci95": [
+                0.08519334640849345,
+                0.12773115317688843
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.053121926614962574,
+              "ci95": [
+                0.04182883191309144,
+                0.06349465810459162
+              ]
+            },
+            "map@20": {
+              "mean": 0.024532232975921595,
+              "ci95": [
+                0.017628662923281257,
+                0.031882919557131136
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0009000000000000001,
+              "ci95": [
+                0.0004,
+                0.0015
+              ]
+            }
+          }
+        },
+        "blend": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.10266191325014855,
+              "ci95": [
+                0.07959784430438843,
+                0.12624238837959423
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.06648234759886763,
+              "ci95": [
+                0.05303181658350326,
+                0.08232575994067663
+              ]
+            },
+            "map@10": {
+              "mean": 0.04039576058201058,
+              "ci95": [
+                0.02940546974206349,
+                0.0522330464616402
+              ]
+            },
+            "recall@20": {
+              "mean": 0.14202227837521955,
+              "ci95": [
+                0.1190255576776165,
+                0.1689432856359327
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.07831498407480136,
+              "ci95": [
+                0.06257969501204436,
+                0.09357894676947244
+              ]
+            },
+            "map@20": {
+              "mean": 0.042975003201318904,
+              "ci95": [
+                0.03132751667936583,
+                0.054398194930489266
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0008,
+              "ci95": [
+                0.00030000000000000003,
+                0.0015
+              ]
+            }
+          }
+        },
+        "blend_retrieved": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.10266191325014855,
+              "ci95": [
+                0.07959784430438843,
+                0.12624238837959423
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.06648234759886763,
+              "ci95": [
+                0.05303181658350326,
+                0.08232575994067663
+              ]
+            },
+            "map@10": {
+              "mean": 0.04039576058201058,
+              "ci95": [
+                0.02940546974206349,
+                0.0522330464616402
+              ]
+            },
+            "recall@20": {
+              "mean": 0.14202227837521955,
+              "ci95": [
+                0.1190255576776165,
+                0.1689432856359327
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.07831498407480136,
+              "ci95": [
+                0.06257969501204436,
+                0.09357894676947244
+              ]
+            },
+            "map@20": {
+              "mean": 0.042975003201318904,
+              "ci95": [
+                0.03132751667936583,
+                0.054398194930489266
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0008,
+              "ci95": [
+                0.00030000000000000003,
+                0.0015
+              ]
+            }
+          }
+        },
+        "quality_mix": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.10699524658348188,
+              "ci95": [
+                0.08407393483150837,
+                0.13101540860283506
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.06833328456588876,
+              "ci95": [
+                0.055433759955373925,
+                0.08490106223314418
+              ]
+            },
+            "map@10": {
+              "mean": 0.04142354497354497,
+              "ci95": [
+                0.03063029761904762,
+                0.05294360912698413
+              ]
+            },
+            "recall@20": {
+              "mean": 0.14564705555882027,
+              "ci95": [
+                0.12114975012732367,
+                0.1733719514962162
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.07956900478832263,
+              "ci95": [
+                0.0633287117558335,
+                0.09467197458940226
+              ]
+            },
+            "map@20": {
+              "mean": 0.043773495970178856,
+              "ci95": [
+                0.0320660371815894,
+                0.05542814852144595
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0008,
+              "ci95": [
+                0.00030000000000000003,
+                0.0015
+              ]
+            }
+          }
+        },
+        "foldin": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.05180832272302859,
+              "ci95": [
+                0.03875054070112893,
+                0.06691199303964009
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.037417725979547165,
+              "ci95": [
+                0.026699162285079885,
+                0.04786236809307321
+              ]
+            },
+            "map@10": {
+              "mean": 0.022301865079365078,
+              "ci95": [
+                0.015169842261904763,
+                0.030231132275132272
+              ]
+            },
+            "recall@20": {
+              "mean": 0.09867838566662096,
+              "ci95": [
+                0.08042152281541988,
+                0.11826611705288176
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.052299986166176114,
+              "ci95": [
+                0.0419202443146754,
+                0.06421278688806706
+              ]
+            },
+            "map@20": {
+              "mean": 0.025688759531274925,
+              "ci95": [
+                0.017553501387659997,
+                0.03453309115239717
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.001,
+              "ci95": [
+                0.0004975000000000001,
+                0.0017000000000000001
+              ]
+            }
+          }
+        }
+      },
+      "paired_vs_baseline": {
+        "popularity": {
+          "ndcg@20_delta": -0.02609079071274592,
+          "ci95": [
+            -0.041951472827038615,
+            -0.010004719652637054
+          ],
+          "users": 500
+        },
+        "blend": {
+          "ndcg@20_delta": -0.0008977332529071494,
+          "ci95": [
+            -0.0019720518135275364,
+            0.0003162791343018753
+          ],
+          "users": 500
+        },
+        "blend_retrieved": {
+          "ndcg@20_delta": -0.0008977332529071494,
+          "ci95": [
+            -0.0019720518135275364,
+            0.0003162791343018753
+          ],
+          "users": 500
+        },
+        "quality_mix": {
+          "ndcg@20_delta": 0.0003562874606141334,
+          "ci95": [
+            -0.0010917661635341373,
+            0.002178287127094849
+          ],
+          "users": 500
+        },
+        "foldin": {
+          "ndcg@20_delta": -0.026912731161532387,
+          "ci95": [
+            -0.04285529758787957,
+            -0.010567471216141973
+          ],
+          "users": 500
+        }
+      },
+      "retrieval_top20_agreement": 1.0
+    },
+    "3": {
+      "methods": {
+        "baseline": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.12465333175596334,
+              "ci95": [
+                0.10080240568641885,
+                0.14617852447260338
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.09606872687679822,
+              "ci95": [
+                0.08126633769522722,
+                0.11341085574762153
+              ]
+            },
+            "map@10": {
+              "mean": 0.060872095616024184,
+              "ci95": [
+                0.046840955735071806,
+                0.07617298653628117
+              ]
+            },
+            "recall@20": {
+              "mean": 0.18034325691852007,
+              "ci95": [
+                0.155369952440834,
+                0.20387369915172546
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.11309918733181164,
+              "ci95": [
+                0.09689105569801469,
+                0.1276131323045452
+              ]
+            },
+            "map@20": {
+              "mean": 0.06472173538423419,
+              "ci95": [
+                0.05214656606373993,
+                0.07863319291626802
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0018,
+              "ci95": [
+                0.0009,
+                0.0027
+              ]
+            }
+          }
+        },
+        "popularity": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.049470346142542934,
+              "ci95": [
+                0.03711519754114433,
+                0.06792441429661107
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.03089802902738188,
+              "ci95": [
+                0.02306959716918982,
+                0.03945138597118969
+              ]
+            },
+            "map@10": {
+              "mean": 0.014654887566137566,
+              "ci95": [
+                0.010105717261904762,
+                0.02029648478835978
+              ]
+            },
+            "recall@20": {
+              "mean": 0.08858055844232045,
+              "ci95": [
+                0.07008347261789825,
+                0.10533045567228345
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.0451496283504287,
+              "ci95": [
+                0.0371431756747646,
+                0.053857546492990765
+              ]
+            },
+            "map@20": {
+              "mean": 0.017738759778006593,
+              "ci95": [
+                0.013166232172227996,
+                0.023395616541247662
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0020999999999999994,
+              "ci95": [
+                0.0012000000000000001,
+                0.0033000000000000004
+              ]
+            }
+          }
+        },
+        "blend": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.12156473526473528,
+              "ci95": [
+                0.09945977910977911,
+                0.14218454406704406
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.09457462939074439,
+              "ci95": [
+                0.07924406427080069,
+                0.11097018993987057
+              ]
+            },
+            "map@10": {
+              "mean": 0.05992199263038549,
+              "ci95": [
+                0.04548152534486017,
+                0.07504007471182918
+              ]
+            },
+            "recall@20": {
+              "mean": 0.17547615860620436,
+              "ci95": [
+                0.15321482955932955,
+                0.19828731297960872
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.11172008054716841,
+              "ci95": [
+                0.0956657431473355,
+                0.12616675954805276
+              ]
+            },
+            "map@20": {
+              "mean": 0.06392287555218246,
+              "ci95": [
+                0.05104952595213562,
+                0.07789304558878768
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0018,
+              "ci95": [
+                0.0009,
+                0.0027
+              ]
+            }
+          }
+        },
+        "blend_retrieved": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.12156473526473528,
+              "ci95": [
+                0.09945977910977911,
+                0.14218454406704406
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.09457462939074439,
+              "ci95": [
+                0.07924406427080069,
+                0.11097018993987057
+              ]
+            },
+            "map@10": {
+              "mean": 0.05992199263038549,
+              "ci95": [
+                0.04548152534486017,
+                0.07504007471182918
+              ]
+            },
+            "recall@20": {
+              "mean": 0.17547615860620436,
+              "ci95": [
+                0.15321482955932955,
+                0.19828731297960872
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.11172008054716841,
+              "ci95": [
+                0.0956657431473355,
+                0.12616675954805276
+              ]
+            },
+            "map@20": {
+              "mean": 0.06392287555218246,
+              "ci95": [
+                0.05104952595213562,
+                0.07789304558878768
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0018,
+              "ci95": [
+                0.0009,
+                0.0027
+              ]
+            }
+          }
+        },
+        "quality_mix": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.12629013209013207,
+              "ci95": [
+                0.10210162740037741,
+                0.1468848525086025
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.09649438453093984,
+              "ci95": [
+                0.08051588700180531,
+                0.1121959684329095
+              ]
+            },
+            "map@10": {
+              "mean": 0.061331553287981865,
+              "ci95": [
+                0.04735071234882842,
+                0.07656274248866213
+              ]
+            },
+            "recall@20": {
+              "mean": 0.18699572950314367,
+              "ci95": [
+                0.16346487437435436,
+                0.21185367797375515
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.11530129059186982,
+              "ci95": [
+                0.09869899705139809,
+                0.12990811541016936
+              ]
+            },
+            "map@20": {
+              "mean": 0.06557888455211659,
+              "ci95": [
+                0.05232671800314669,
+                0.07985850775423678
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0016,
+              "ci95": [
+                0.0007,
+                0.002402499999999998
+              ]
+            }
+          }
+        },
+        "foldin": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.062297051981834585,
+              "ci95": [
+                0.04785200843842148,
+                0.07787928871852784
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.037254207843464456,
+              "ci95": [
+                0.028350792325373915,
+                0.046627507927074166
+              ]
+            },
+            "map@10": {
+              "mean": 0.017121825396825392,
+              "ci95": [
+                0.012436108796296298,
+                0.021701108134920627
+              ]
+            },
+            "recall@20": {
+              "mean": 0.10023064759547597,
+              "ci95": [
+                0.08159365268338323,
+                0.12211275369348422
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.05061718404353701,
+              "ci95": [
+                0.041279198908824144,
+                0.059429632895955965
+              ]
+            },
+            "map@20": {
+              "mean": 0.020335351970735726,
+              "ci95": [
+                0.015905844759300892,
+                0.02530177422479891
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0018,
+              "ci95": [
+                0.0009000000000000001,
+                0.003
+              ]
+            }
+          }
+        }
+      },
+      "paired_vs_baseline": {
+        "popularity": {
+          "ndcg@20_delta": -0.06794955898138295,
+          "ci95": [
+            -0.08545431967354677,
+            -0.05025723643031538
+          ],
+          "users": 500
+        },
+        "blend": {
+          "ndcg@20_delta": -0.0013791067846432399,
+          "ci95": [
+            -0.003975467564102426,
+            0.0009208853068623729
+          ],
+          "users": 500
+        },
+        "blend_retrieved": {
+          "ndcg@20_delta": -0.0013791067846432399,
+          "ci95": [
+            -0.003975467564102426,
+            0.0009208853068623729
+          ],
+          "users": 500
+        },
+        "quality_mix": {
+          "ndcg@20_delta": 0.0022021032600581724,
+          "ci95": [
+            -0.000538173382384401,
+            0.005183807208292263
+          ],
+          "users": 500
+        },
+        "foldin": {
+          "ndcg@20_delta": -0.06248200328827464,
+          "ci95": [
+            -0.07794379261515483,
+            -0.04668389120771337
+          ],
+          "users": 500
+        }
+      },
+      "retrieval_top20_agreement": 1.0
+    },
+    "5": {
+      "methods": {
+        "baseline": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.1032475277337042,
+              "ci95": [
+                0.08374867528305026,
+                0.12211871451016303
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.08033531421675022,
+              "ci95": [
+                0.06716963481163873,
+                0.09366466556708639
+              ]
+            },
+            "map@10": {
+              "mean": 0.04357960884353741,
+              "ci95": [
+                0.03426661687452759,
+                0.05332285331632653
+              ]
+            },
+            "recall@20": {
+              "mean": 0.1572422765796295,
+              "ci95": [
+                0.13431005504218005,
+                0.18079532256142547
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.09869953800464391,
+              "ci95": [
+                0.08466546705039556,
+                0.11160415249823592
+              ]
+            },
+            "map@20": {
+              "mean": 0.0473256779719121,
+              "ci95": [
+                0.03819026596959191,
+                0.05837249782762558
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0035,
+              "ci95": [
+                0.0022,
+                0.004702499999999998
+              ]
+            }
+          }
+        },
+        "popularity": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.03186539264656912,
+              "ci95": [
+                0.02327210057099763,
+                0.0429952977202536
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.025779878265601075,
+              "ci95": [
+                0.01883320739894886,
+                0.03450952395059254
+              ]
+            },
+            "map@10": {
+              "mean": 0.012225194003527336,
+              "ci95": [
+                0.007493903108465608,
+                0.017866988756613755
+              ]
+            },
+            "recall@20": {
+              "mean": 0.0731860131371896,
+              "ci95": [
+                0.059066573160499625,
+                0.08874166311956017
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.04044906128990396,
+              "ci95": [
+                0.03294802537511269,
+                0.04931247870739581
+              ]
+            },
+            "map@20": {
+              "mean": 0.01528252051036108,
+              "ci95": [
+                0.010365700995180511,
+                0.02209134914195471
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0032,
+              "ci95": [
+                0.0017975,
+                0.0046
+              ]
+            }
+          }
+        },
+        "blend": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.09978493699111347,
+              "ci95": [
+                0.08260831680574326,
+                0.11917959722058985
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.07913820594737404,
+              "ci95": [
+                0.06592564010007522,
+                0.09201910270454042
+              ]
+            },
+            "map@10": {
+              "mean": 0.0425067186318972,
+              "ci95": [
+                0.033837301398337113,
+                0.05247554105253212
+              ]
+            },
+            "recall@20": {
+              "mean": 0.1564003573877103,
+              "ci95": [
+                0.13255588480881864,
+                0.17917760560354676
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.09779016452766778,
+              "ci95": [
+                0.08422591198474856,
+                0.11080524006955537
+              ]
+            },
+            "map@20": {
+              "mean": 0.04654752147143881,
+              "ci95": [
+                0.03751989400206529,
+                0.056858014463879725
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0034000000000000002,
+              "ci95": [
+                0.0021000000000000003,
+                0.0047
+              ]
+            }
+          }
+        },
+        "blend_retrieved": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.09978493699111347,
+              "ci95": [
+                0.08260831680574326,
+                0.11917959722058985
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.07913820594737404,
+              "ci95": [
+                0.06592564010007522,
+                0.09201910270454042
+              ]
+            },
+            "map@10": {
+              "mean": 0.0425067186318972,
+              "ci95": [
+                0.033837301398337113,
+                0.05247554105253212
+              ]
+            },
+            "recall@20": {
+              "mean": 0.1564003573877103,
+              "ci95": [
+                0.13255588480881864,
+                0.17917760560354676
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.09779016452766778,
+              "ci95": [
+                0.08422591198474856,
+                0.11080524006955537
+              ]
+            },
+            "map@20": {
+              "mean": 0.04654752147143881,
+              "ci95": [
+                0.03751989400206529,
+                0.056858014463879725
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0034000000000000002,
+              "ci95": [
+                0.0021000000000000003,
+                0.0047
+              ]
+            }
+          }
+        },
+        "quality_mix": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.10269539098156745,
+              "ci95": [
+                0.08498162458619811,
+                0.12241759827998798
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.08053236542412037,
+              "ci95": [
+                0.06793982618488797,
+                0.09352300388994197
+              ]
+            },
+            "map@10": {
+              "mean": 0.043584006991685555,
+              "ci95": [
+                0.034119742890211635,
+                0.05327827973828419
+              ]
+            },
+            "recall@20": {
+              "mean": 0.16153744252479543,
+              "ci95": [
+                0.13754540057736378,
+                0.18486584936713613
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.10019584133831964,
+              "ci95": [
+                0.086251372271788,
+                0.11293379996050341
+              ]
+            },
+            "map@20": {
+              "mean": 0.047678857125828984,
+              "ci95": [
+                0.03868975835152693,
+                0.05903519442406865
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0035,
+              "ci95": [
+                0.0022,
+                0.004702499999999998
+              ]
+            }
+          }
+        },
+        "foldin": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.04826357697857698,
+              "ci95": [
+                0.036493689199689205,
+                0.06365076670551671
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.034603751750588926,
+              "ci95": [
+                0.025995942927490256,
+                0.04360592301926942
+              ]
+            },
+            "map@10": {
+              "mean": 0.015916924603174603,
+              "ci95": [
+                0.010663127976190475,
+                0.022074684854497345
+              ]
+            },
+            "recall@20": {
+              "mean": 0.08300499471117118,
+              "ci95": [
+                0.06695819526796733,
+                0.09957071792586497
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.04626166436495162,
+              "ci95": [
+                0.037899887352925966,
+                0.05472444410295941
+              ]
+            },
+            "map@20": {
+              "mean": 0.01798998647512728,
+              "ci95": [
+                0.013042319836687848,
+                0.024679189228300542
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0026000000000000007,
+              "ci95": [
+                0.0014000000000000002,
+                0.0038000000000000004
+              ]
+            }
+          }
+        }
+      },
+      "paired_vs_baseline": {
+        "popularity": {
+          "ndcg@20_delta": -0.05825047671473994,
+          "ci95": [
+            -0.07309778315191447,
+            -0.04424592716133687
+          ],
+          "users": 500
+        },
+        "blend": {
+          "ndcg@20_delta": -0.0009093734769761228,
+          "ci95": [
+            -0.0032882600805985043,
+            0.0013780520054865527
+          ],
+          "users": 500
+        },
+        "blend_retrieved": {
+          "ndcg@20_delta": -0.0009093734769761228,
+          "ci95": [
+            -0.0032882600805985043,
+            0.0013780520054865527
+          ],
+          "users": 500
+        },
+        "quality_mix": {
+          "ndcg@20_delta": 0.001496303333675717,
+          "ci95": [
+            -3.6731093006227466e-05,
+            0.003161659482735805
+          ],
+          "users": 500
+        },
+        "foldin": {
+          "ndcg@20_delta": -0.052437873639692295,
+          "ci95": [
+            -0.06493247657611027,
+            -0.037860936321884905
+          ],
+          "users": 500
+        }
+      },
+      "retrieval_top20_agreement": 1.0
+    },
+    "10": {
+      "methods": {
+        "baseline": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.1076849356494699,
+              "ci95": [
+                0.0909177443422908,
+                0.12862918738913717
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.07873572481344274,
+              "ci95": [
+                0.06725873181408332,
+                0.0908428793887352
+              ]
+            },
+            "map@10": {
+              "mean": 0.03748962585034013,
+              "ci95": [
+                0.02970925118102797,
+                0.04670456624779541
+              ]
+            },
+            "recall@20": {
+              "mean": 0.16252024245889166,
+              "ci95": [
+                0.14128206733599707,
+                0.18519136448034137
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.09822530422609939,
+              "ci95": [
+                0.08754241826065531,
+                0.1102767962805035
+              ]
+            },
+            "map@20": {
+              "mean": 0.04193001005594191,
+              "ci95": [
+                0.034861600454043455,
+                0.051079148960209216
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0029000000000000002,
+              "ci95": [
+                0.0019975,
+                0.004
+              ]
+            }
+          }
+        },
+        "popularity": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.03189174030005232,
+              "ci95": [
+                0.02305294748055298,
+                0.04292515607580825
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.0270965938127041,
+              "ci95": [
+                0.019182429018664834,
+                0.035456143489632795
+              ]
+            },
+            "map@10": {
+              "mean": 0.013556056626354245,
+              "ci95": [
+                0.007897817743764173,
+                0.019550820554610736
+              ]
+            },
+            "recall@20": {
+              "mean": 0.06949189803406386,
+              "ci95": [
+                0.05614910047110276,
+                0.08564659163808476
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.04217563538335025,
+              "ci95": [
+                0.033848517472576826,
+                0.05074950076847402
+              ]
+            },
+            "map@20": {
+              "mean": 0.016767422539013834,
+              "ci95": [
+                0.011647983395470235,
+                0.023739691319957214
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0037,
+              "ci95": [
+                0.0026,
+                0.0052
+              ]
+            }
+          }
+        },
+        "blend": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.10424059956771964,
+              "ci95": [
+                0.08658989812546077,
+                0.12488843671583011
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.07683328732530897,
+              "ci95": [
+                0.06531721756389826,
+                0.08916211349309144
+              ]
+            },
+            "map@10": {
+              "mean": 0.036959146825396826,
+              "ci95": [
+                0.028755464671516753,
+                0.046211381613756604
+              ]
+            },
+            "recall@20": {
+              "mean": 0.16104423601766785,
+              "ci95": [
+                0.14016135877538352,
+                0.18466111525755943
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.09726976555670609,
+              "ci95": [
+                0.08620180022470454,
+                0.10911957915298148
+              ]
+            },
+            "map@20": {
+              "mean": 0.04166838457830276,
+              "ci95": [
+                0.034457848881230574,
+                0.05111133549079076
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0031000000000000003,
+              "ci95": [
+                0.0021000000000000003,
+                0.0044
+              ]
+            }
+          }
+        },
+        "blend_retrieved": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.10424059956771964,
+              "ci95": [
+                0.08658989812546077,
+                0.12488843671583011
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.07683328732530897,
+              "ci95": [
+                0.06531721756389826,
+                0.08916211349309144
+              ]
+            },
+            "map@10": {
+              "mean": 0.036959146825396826,
+              "ci95": [
+                0.028755464671516753,
+                0.046211381613756604
+              ]
+            },
+            "recall@20": {
+              "mean": 0.16104423601766785,
+              "ci95": [
+                0.14016135877538352,
+                0.18466111525755943
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.09726976555670609,
+              "ci95": [
+                0.08620180022470454,
+                0.10911957915298148
+              ]
+            },
+            "map@20": {
+              "mean": 0.04166838457830276,
+              "ci95": [
+                0.034457848881230574,
+                0.05111133549079076
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0031000000000000003,
+              "ci95": [
+                0.0021000000000000003,
+                0.0044
+              ]
+            }
+          }
+        },
+        "quality_mix": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.10458126815838822,
+              "ci95": [
+                0.08694263769554557,
+                0.1229567085304417
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.07655026792385577,
+              "ci95": [
+                0.06477489231170934,
+                0.08838136853531323
+              ]
+            },
+            "map@10": {
+              "mean": 0.036767549760644995,
+              "ci95": [
+                0.029212427012471655,
+                0.04544552823444192
+              ]
+            },
+            "recall@20": {
+              "mean": 0.15649993225379888,
+              "ci95": [
+                0.13470956942254403,
+                0.17753162833575953
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.09572710904331573,
+              "ci95": [
+                0.08510448641582705,
+                0.10747029841061075
+              ]
+            },
+            "map@20": {
+              "mean": 0.04116794588902475,
+              "ci95": [
+                0.03418874802946871,
+                0.04986529212564619
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0029000000000000002,
+              "ci95": [
+                0.0017975,
+                0.0040999999999999995
+              ]
+            }
+          }
+        },
+        "foldin": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.04585351638945999,
+              "ci95": [
+                0.03578457780602013,
+                0.05745132192702416
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.03533486613977592,
+              "ci95": [
+                0.027644230996580716,
+                0.04322441948455655
+              ]
+            },
+            "map@10": {
+              "mean": 0.015228597883597884,
+              "ci95": [
+                0.010909449570105818,
+                0.01969513095238095
+              ]
+            },
+            "recall@20": {
+              "mean": 0.07685822068629983,
+              "ci95": [
+                0.06252526186727005,
+                0.0911668996084269
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.04642351519067277,
+              "ci95": [
+                0.03866128205178402,
+                0.05645717112960756
+              ]
+            },
+            "map@20": {
+              "mean": 0.017428723242886874,
+              "ci95": [
+                0.013151865143553126,
+                0.022138626603426817
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0022,
+              "ci95": [
+                0.0012975,
+                0.003302499999999998
+              ]
+            }
+          }
+        }
+      },
+      "paired_vs_baseline": {
+        "popularity": {
+          "ndcg@20_delta": -0.056049668842749145,
+          "ci95": [
+            -0.06923192462985682,
+            -0.04359678377887188
+          ],
+          "users": 500
+        },
+        "blend": {
+          "ndcg@20_delta": -0.0009555386693932979,
+          "ci95": [
+            -0.0030684646720195003,
+            0.0008661335786491702
+          ],
+          "users": 500
+        },
+        "blend_retrieved": {
+          "ndcg@20_delta": -0.0009555386693932979,
+          "ci95": [
+            -0.0030684646720195003,
+            0.0008661335786491702
+          ],
+          "users": 500
+        },
+        "quality_mix": {
+          "ndcg@20_delta": -0.0024981951827836545,
+          "ci95": [
+            -0.005194794346289237,
+            0.00015038530348206067
+          ],
+          "users": 500
+        },
+        "foldin": {
+          "ndcg@20_delta": -0.05180178903542662,
+          "ci95": [
+            -0.06569915890168561,
+            -0.03988177078846133
+          ],
+          "users": 500
+        }
+      },
+      "retrieval_top20_agreement": 1.0
+    },
+    "20": {
+      "methods": {
+        "baseline": {
+          "users": 51,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.10158677024091066,
+              "ci95": [
+                0.05802974142330392,
+                0.1545657895926792
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.08769478129060754,
+              "ci95": [
+                0.059054828534106214,
+                0.12197660541996608
+              ]
+            },
+            "map@10": {
+              "mean": 0.03571713870733478,
+              "ci95": [
+                0.021017902531382925,
+                0.05335134609399315
+              ]
+            },
+            "recall@20": {
+              "mean": 0.14570924428313844,
+              "ci95": [
+                0.09495352248815207,
+                0.20441185545396687
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.10074764131591812,
+              "ci95": [
+                0.06934958092353916,
+                0.1326918038881415
+              ]
+            },
+            "map@20": {
+              "mean": 0.03654694736735469,
+              "ci95": [
+                0.023689284742335292,
+                0.05341323425961327
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.006862745098039216,
+              "ci95": [
+                0.000980392156862745,
+                0.014705882352941176
+              ]
+            }
+          }
+        },
+        "popularity": {
+          "users": 51,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.009781562688932533,
+              "ci95": [
+                0.001449928630456014,
+                0.020220391477152794
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.01413188649576494,
+              "ci95": [
+                0.003585753403059056,
+                0.028205502416162282
+              ]
+            },
+            "map@10": {
+              "mean": 0.004881952781112445,
+              "ci95": [
+                0.0004901960784313725,
+                0.010096788715486193
+              ]
+            },
+            "recall@20": {
+              "mean": 0.06663711854719293,
+              "ci95": [
+                0.032595125853662026,
+                0.10891265998982361
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.03509201706150344,
+              "ci95": [
+                0.019233766899151548,
+                0.05292433653071287
+              ]
+            },
+            "map@20": {
+              "mean": 0.008192672350444593,
+              "ci95": [
+                0.00413079597339921,
+                0.01323711447303231
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0029411764705882357,
+              "ci95": [
+                0.0,
+                0.0068627450980392165
+              ]
+            }
+          }
+        },
+        "blend": {
+          "users": 51,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.10081386848761675,
+              "ci95": [
+                0.05729055686058995,
+                0.1530796395771174
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.08682986387555205,
+              "ci95": [
+                0.05699277963243619,
+                0.11998164110617242
+              ]
+            },
+            "map@10": {
+              "mean": 0.03510277259051769,
+              "ci95": [
+                0.021200887994086526,
+                0.052847909534184036
+              ]
+            },
+            "recall@20": {
+              "mean": 0.1464613969960755,
+              "ci95": [
+                0.09729031921622931,
+                0.20176472661924688
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.10128083540665782,
+              "ci95": [
+                0.07063304434134055,
+                0.13297219492888301
+              ]
+            },
+            "map@20": {
+              "mean": 0.03618541023997053,
+              "ci95": [
+                0.024593017821660484,
+                0.05385540230109578
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.006862745098039216,
+              "ci95": [
+                0.000980392156862745,
+                0.01374999999999998
+              ]
+            }
+          }
+        },
+        "blend_retrieved": {
+          "users": 51,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.10081386848761675,
+              "ci95": [
+                0.05729055686058995,
+                0.1530796395771174
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.08682986387555205,
+              "ci95": [
+                0.05699277963243619,
+                0.11998164110617242
+              ]
+            },
+            "map@10": {
+              "mean": 0.03510277259051769,
+              "ci95": [
+                0.021200887994086526,
+                0.052847909534184036
+              ]
+            },
+            "recall@20": {
+              "mean": 0.1464613969960755,
+              "ci95": [
+                0.09729031921622931,
+                0.20176472661924688
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.10128083540665782,
+              "ci95": [
+                0.07063304434134055,
+                0.13297219492888301
+              ]
+            },
+            "map@20": {
+              "mean": 0.03618541023997053,
+              "ci95": [
+                0.024593017821660484,
+                0.05385540230109578
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.006862745098039216,
+              "ci95": [
+                0.000980392156862745,
+                0.01374999999999998
+              ]
+            }
+          }
+        },
+        "quality_mix": {
+          "users": 51,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.10060637808404793,
+              "ci95": [
+                0.05802974142330392,
+                0.15358539743581645
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.08676366866411557,
+              "ci95": [
+                0.05665242862695481,
+                0.12117612156215937
+              ]
+            },
+            "map@10": {
+              "mean": 0.03551840180516651,
+              "ci95": [
+                0.020754149808071377,
+                0.05350033555088699
+              ]
+            },
+            "recall@20": {
+              "mean": 0.14396632489316025,
+              "ci95": [
+                0.09327367243433399,
+                0.1994936887454502
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.10035122386784137,
+              "ci95": [
+                0.07137653599984163,
+                0.13261231715458108
+              ]
+            },
+            "map@20": {
+              "mean": 0.03626562862654663,
+              "ci95": [
+                0.02372324120806967,
+                0.05350219097593842
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.006862745098039216,
+              "ci95": [
+                0.000980392156862745,
+                0.014705882352941176
+              ]
+            }
+          }
+        },
+        "foldin": {
+          "users": 51,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.04902269898088552,
+              "ci95": [
+                0.023543235282386027,
+                0.07909445842933528
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.05077620389320891,
+              "ci95": [
+                0.022190995730811257,
+                0.08358447534884302
+              ]
+            },
+            "map@10": {
+              "mean": 0.02415106783454122,
+              "ci95": [
+                0.005923337853659984,
+                0.04831894239177152
+              ]
+            },
+            "recall@20": {
+              "mean": 0.1033396229314524,
+              "ci95": [
+                0.055288989081291845,
+                0.15899621477020853
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.06300373468430381,
+              "ci95": [
+                0.03545647845308253,
+                0.09566795536267834
+              ]
+            },
+            "map@20": {
+              "mean": 0.02390475821425601,
+              "ci95": [
+                0.008466141977285211,
+                0.04911225550746173
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0029411764705882357,
+              "ci95": [
+                0.0,
+                0.0068627450980392165
+              ]
+            }
+          }
+        }
+      },
+      "paired_vs_baseline": {
+        "popularity": {
+          "ndcg@20_delta": -0.06565562425441468,
+          "ci95": [
+            -0.0952706168759283,
+            -0.03538196482483331
+          ],
+          "users": 51
+        },
+        "blend": {
+          "ndcg@20_delta": 0.000533194090739706,
+          "ci95": [
+            -0.005492700770189206,
+            0.006419194450479604
+          ],
+          "users": 51
+        },
+        "blend_retrieved": {
+          "ndcg@20_delta": 0.000533194090739706,
+          "ci95": [
+            -0.005492700770189206,
+            0.006419194450479604
+          ],
+          "users": 51
+        },
+        "quality_mix": {
+          "ndcg@20_delta": -0.0003964174480767426,
+          "ci95": [
+            -0.004968080004695613,
+            0.0035515803638685854
+          ],
+          "users": 51
+        },
+        "foldin": {
+          "ndcg@20_delta": -0.0377439066316143,
+          "ci95": [
+            -0.07091204170172931,
+            -0.0008735316393373746
+          ],
+          "users": 51
+        }
+      },
+      "retrieval_top20_agreement": 1.0
+    },
+    "50": {
+      "methods": {
+        "baseline": {
+          "users": 0,
+          "status": "no unexposed eligible users"
+        },
+        "popularity": {
+          "users": 0,
+          "status": "no unexposed eligible users"
+        },
+        "blend": {
+          "users": 0,
+          "status": "no unexposed eligible users"
+        },
+        "blend_retrieved": {
+          "users": 0,
+          "status": "no unexposed eligible users"
+        },
+        "quality_mix": {
+          "users": 0,
+          "status": "no unexposed eligible users"
+        },
+        "foldin": {
+          "users": 0,
+          "status": "no unexposed eligible users"
+        }
+      },
+      "paired_vs_baseline": {
+        "popularity": null,
+        "blend": null,
+        "blend_retrieved": null,
+        "quality_mix": null,
+        "foldin": null
+      },
+      "retrieval_top20_agreement": null
+    },
+    "100": {
+      "methods": {
+        "baseline": {
+          "users": 0,
+          "status": "no unexposed eligible users"
+        },
+        "popularity": {
+          "users": 0,
+          "status": "no unexposed eligible users"
+        },
+        "blend": {
+          "users": 0,
+          "status": "no unexposed eligible users"
+        },
+        "blend_retrieved": {
+          "users": 0,
+          "status": "no unexposed eligible users"
+        },
+        "quality_mix": {
+          "users": 0,
+          "status": "no unexposed eligible users"
+        },
+        "foldin": {
+          "users": 0,
+          "status": "no unexposed eligible users"
+        }
+      },
+      "paired_vs_baseline": {
+        "popularity": null,
+        "blend": null,
+        "blend_retrieved": null,
+        "quality_mix": null,
+        "foldin": null
+      },
+      "retrieval_top20_agreement": null
+    }
+  },
+  "cold_items": {
+    "1": {
+      "methods": {
+        "old_description": {
+          "users": 173,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.028901734104046242,
+              "ci95": [
+                0.009585741811175339,
+                0.05394990366088631
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.014284504192363283,
+              "ci95": [
+                0.004472286788838631,
+                0.025656511159390265
+              ]
+            },
+            "map@10": {
+              "mean": 0.008670520231213872,
+              "ci95": [
+                0.0023121387283236996,
+                0.017736030828516366
+              ]
+            },
+            "recall@20": {
+              "mean": 0.07129094412331406,
+              "ci95": [
+                0.0394990366088632,
+                0.10982658959537572
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.025427067337901253,
+              "ci95": [
+                0.013227241880811761,
+                0.039570290314364084
+              ]
+            },
+            "map@20": {
+              "mean": 0.01154155054725931,
+              "ci95": [
+                0.004879799805532192,
+                0.019113654395021273
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "tags": {
+          "users": 173,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.0348747591522158,
+              "ci95": [
+                0.015404624277456648,
+                0.06360789980732175
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.020677420002686343,
+              "ci95": [
+                0.007736115965525081,
+                0.03400464183412862
+              ]
+            },
+            "map@10": {
+              "mean": 0.012392574242285225,
+              "ci95": [
+                0.0035002446707649015,
+                0.022225586445239618
+              ]
+            },
+            "recall@20": {
+              "mean": 0.08882466281310213,
+              "ci95": [
+                0.048126204238921,
+                0.12626204238921
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.03430605013385175,
+              "ci95": [
+                0.021504844427462415,
+                0.04983556072605608
+              ]
+            },
+            "map@20": {
+              "mean": 0.015981897655916517,
+              "ci95": [
+                0.008071808345233961,
+                0.025379646997668752
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "cosine": {
+          "users": 173,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.0394990366088632,
+              "ci95": [
+                0.017316955684007707,
+                0.06842485549132946
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.022008663574619756,
+              "ci95": [
+                0.008031747225023065,
+                0.03475833954662096
+              ]
+            },
+            "map@10": {
+              "mean": 0.013044774749977062,
+              "ci95": [
+                0.003961257913570052,
+                0.024365767501605653
+              ]
+            },
+            "recall@20": {
+              "mean": 0.07726396917148362,
+              "ci95": [
+                0.03872832369942197,
+                0.11121387283236991
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.03209409536939445,
+              "ci95": [
+                0.019321039453680723,
+                0.04814746276797659
+              ]
+            },
+            "map@20": {
+              "mean": 0.015762835514889058,
+              "ci95": [
+                0.007954077916809889,
+                0.02447465111368367
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0,
+              "ci95": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "projection": {
+          "users": 173,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.0745664739884393,
+              "ci95": [
+                0.043733140655105966,
+                0.10829961464354528
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.041525617286766466,
+              "ci95": [
+                0.022998206695112423,
+                0.0626545569289181
+              ]
+            },
+            "map@10": {
+              "mean": 0.02610407682662018,
+              "ci95": [
+                0.011195618099519833,
+                0.04173909303605835
+              ]
+            },
+            "recall@20": {
+              "mean": 0.1106936416184971,
+              "ci95": [
+                0.0699421965317919,
+                0.15020231213872834
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.05223659345693183,
+              "ci95": [
+                0.034057716508579264,
+                0.07376041712236049
+              ]
+            },
+            "map@20": {
+              "mean": 0.02875664380892194,
+              "ci95": [
+                0.014799383363434707,
+                0.04777565479686357
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.00028901734104046245,
+              "ci95": [
+                0.0,
+                0.0008670520231213874
+              ]
+            }
+          }
+        }
+      },
+      "paired_vs_old_description": {
+        "tags": {
+          "ndcg@20_delta": 0.008878982795950492,
+          "ci95": [
+            -0.0017547673730250572,
+            0.019545694102308084
+          ],
+          "users": 173
+        },
+        "cosine": {
+          "ndcg@20_delta": 0.006667028031493185,
+          "ci95": [
+            -0.003251826092153235,
+            0.01705400989797081
+          ],
+          "users": 173
+        },
+        "projection": {
+          "ndcg@20_delta": 0.026809526119030577,
+          "ci95": [
+            0.007059214404101134,
+            0.04673512665074223
+          ],
+          "users": 173
+        }
+      }
+    },
+    "3": {
+      "methods": {
+        "old_description": {
+          "users": 204,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.027369281045751634,
+              "ci95": [
+                0.009385212418300653,
+                0.04657883986928104
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.01555718601933987,
+              "ci95": [
+                0.005297442974449662,
+                0.0308790085361168
+              ]
+            },
+            "map@10": {
+              "mean": 0.00996732026143791,
+              "ci95": [
+                0.0020690359477124184,
+                0.020705678104575156
+              ]
+            },
+            "recall@20": {
+              "mean": 0.05923202614379084,
+              "ci95": [
+                0.030637254901960783,
+                0.0915032679738562
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.023639495931441608,
+              "ci95": [
+                0.011938283011461631,
+                0.03874550318375755
+              ]
+            },
+            "map@20": {
+              "mean": 0.012096141517581146,
+              "ci95": [
+                0.003944380433592896,
+                0.023508448116855613
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.00024509803921568627,
+              "ci95": [
+                0.0,
+                0.0007352941176470589
+              ]
+            }
+          }
+        },
+        "tags": {
+          "users": 204,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.04656862745098039,
+              "ci95": [
+                0.02448937908496732,
+                0.06944444444444443
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.02259206892633272,
+              "ci95": [
+                0.012573329758372274,
+                0.03467368859364049
+              ]
+            },
+            "map@10": {
+              "mean": 0.01080522486772487,
+              "ci95": [
+                0.005432471599751012,
+                0.0170167094615624
+              ]
+            },
+            "recall@20": {
+              "mean": 0.07107843137254902,
+              "ci95": [
+                0.04369893790849673,
+                0.10296160130718952
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.02877708265645771,
+              "ci95": [
+                0.018167660109637697,
+                0.04047188825798747
+              ]
+            },
+            "map@20": {
+              "mean": 0.012281418415319344,
+              "ci95": [
+                0.0067573210753599676,
+                0.0179369884832588
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0007352941176470589,
+              "ci95": [
+                0.0,
+                0.0017156862745098041
+              ]
+            }
+          }
+        },
+        "cosine": {
+          "users": 204,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.04779411764705882,
+              "ci95": [
+                0.02369281045751634,
+                0.0703022875816993
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.02701235356814461,
+              "ci95": [
+                0.015300506422792163,
+                0.04349389998132497
+              ]
+            },
+            "map@10": {
+              "mean": 0.016261736175951863,
+              "ci95": [
+                0.006855596405228758,
+                0.02852130667081647
+              ]
+            },
+            "recall@20": {
+              "mean": 0.0784313725490196,
+              "ci95": [
+                0.04738562091503268,
+                0.11236723856209146
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.034974289817897616,
+              "ci95": [
+                0.02058267432526191,
+                0.052553208791978744
+              ]
+            },
+            "map@20": {
+              "mean": 0.018133172166002402,
+              "ci95": [
+                0.008167842656724558,
+                0.030353058414848918
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0007352941176470589,
+              "ci95": [
+                0.0,
+                0.0017156862745098041
+              ]
+            }
+          }
+        },
+        "projection": {
+          "users": 204,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.060457516339869274,
+              "ci95": [
+                0.034722222222222224,
+                0.08746936274509799
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.03241359601058726,
+              "ci95": [
+                0.018227183412132458,
+                0.04783918649570082
+              ]
+            },
+            "map@10": {
+              "mean": 0.01859973155929038,
+              "ci95": [
+                0.0093031118697479,
+                0.028329017370837182
+              ]
+            },
+            "recall@20": {
+              "mean": 0.106781045751634,
+              "ci95": [
+                0.07340277777777779,
+                0.14787990196078432
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.044828403218987636,
+              "ci95": [
+                0.028325056592359985,
+                0.06085997189302226
+              ]
+            },
+            "map@20": {
+              "mean": 0.021844477864840728,
+              "ci95": [
+                0.012693794920094204,
+                0.03345799134315285
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0007352941176470589,
+              "ci95": [
+                0.0,
+                0.0017156862745098041
+              ]
+            }
+          }
+        }
+      },
+      "paired_vs_old_description": {
+        "tags": {
+          "ndcg@20_delta": 0.005137586725016101,
+          "ci95": [
+            -0.009190959742788128,
+            0.018026973324077683
+          ],
+          "users": 204
+        },
+        "cosine": {
+          "ndcg@20_delta": 0.011334793886456009,
+          "ci95": [
+            -0.0021710972318283142,
+            0.02430355920370469
+          ],
+          "users": 204
+        },
+        "projection": {
+          "ndcg@20_delta": 0.02118890728754603,
+          "ci95": [
+            0.0033198485797976407,
+            0.03819727418033512
+          ],
+          "users": 204
+        }
+      }
+    },
+    "5": {
+      "methods": {
+        "old_description": {
+          "users": 182,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.032509157509157505,
+              "ci95": [
+                0.014194139194139192,
+                0.05499084249084245
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.021420675304390832,
+              "ci95": [
+                0.00910430892376338,
+                0.040338961770346723
+              ]
+            },
+            "map@10": {
+              "mean": 0.013881257631257629,
+              "ci95": [
+                0.0035834478021978017,
+                0.02652090964590963
+              ]
+            },
+            "recall@20": {
+              "mean": 0.07133699633699635,
+              "ci95": [
+                0.04202838827838828,
+                0.10260302197802193
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.032073491068962345,
+              "ci95": [
+                0.018989424235938027,
+                0.049672455063207804
+              ]
+            },
+            "map@20": {
+              "mean": 0.016384538562459326,
+              "ci95": [
+                0.0063897699392295275,
+                0.032560566391628416
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0008241758241758243,
+              "ci95": [
+                0.0,
+                0.001923076923076923
+              ]
+            }
+          }
+        },
+        "tags": {
+          "users": 182,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.04551282051282051,
+              "ci95": [
+                0.025354853479853477,
+                0.06924450549450549
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.025655074736803812,
+              "ci95": [
+                0.013942070101153486,
+                0.04117232433826715
+              ]
+            },
+            "map@10": {
+              "mean": 0.014432888540031398,
+              "ci95": [
+                0.005467578056863771,
+                0.02792639652014652
+              ]
+            },
+            "recall@20": {
+              "mean": 0.08946886446886446,
+              "ci95": [
+                0.05856227106227106,
+                0.1254739010989011
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.0379354291676858,
+              "ci95": [
+                0.024108983161481582,
+                0.05481034506484302
+              ]
+            },
+            "map@20": {
+              "mean": 0.017523050350062734,
+              "ci95": [
+                0.008740194047960247,
+                0.031383568586617554
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0013736263736263737,
+              "ci95": [
+                0.0002747252747252747,
+                0.002472527472527473
+              ]
+            }
+          }
+        },
+        "cosine": {
+          "users": 182,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.051007326007326007,
+              "ci95": [
+                0.028374542124542122,
+                0.07830128205128205
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.029041416897527362,
+              "ci95": [
+                0.015510816738252971,
+                0.04588493703671487
+              ]
+            },
+            "map@10": {
+              "mean": 0.017051500087214375,
+              "ci95": [
+                0.006070311137275423,
+                0.0320721317373103
+              ]
+            },
+            "recall@20": {
+              "mean": 0.09606227106227107,
+              "ci95": [
+                0.06135302197802198,
+                0.13361492673992673
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.041621960009862374,
+              "ci95": [
+                0.026563125383700373,
+                0.05972133057108101
+              ]
+            },
+            "map@20": {
+              "mean": 0.02030785602086592,
+              "ci95": [
+                0.009697482896171785,
+                0.03472577870766852
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0013736263736263737,
+              "ci95": [
+                0.0002747252747252747,
+                0.002472527472527473
+              ]
+            }
+          }
+        },
+        "projection": {
+          "users": 182,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.0431013431013431,
+              "ci95": [
+                0.023675213675213674,
+                0.07048763736263737
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.025501781683646477,
+              "ci95": [
+                0.012050680030274057,
+                0.039193028762675795
+              ]
+            },
+            "map@10": {
+              "mean": 0.013114013411632458,
+              "ci95": [
+                0.005902811088822993,
+                0.020635874542124535
+              ]
+            },
+            "recall@20": {
+              "mean": 0.09072039072039072,
+              "ci95": [
+                0.05600274725274725,
+                0.13080815018315015
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.03941681131673571,
+              "ci95": [
+                0.024878196600205786,
+                0.05421000824623524
+              ]
+            },
+            "map@20": {
+              "mean": 0.016886810893072306,
+              "ci95": [
+                0.009336371127407506,
+                0.025842888530492544
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0008241758241758243,
+              "ci95": [
+                0.0,
+                0.001655219780219774
+              ]
+            }
+          }
+        }
+      },
+      "paired_vs_old_description": {
+        "tags": {
+          "ndcg@20_delta": 0.005861938098723451,
+          "ci95": [
+            -0.014481125887662509,
+            0.026176587695313
+          ],
+          "users": 182
+        },
+        "cosine": {
+          "ndcg@20_delta": 0.009548468940900024,
+          "ci95": [
+            -0.009259699932720846,
+            0.031092699946265307
+          ],
+          "users": 182
+        },
+        "projection": {
+          "ndcg@20_delta": 0.007343320247773355,
+          "ci95": [
+            -0.01181965117363316,
+            0.028544937408869524
+          ],
+          "users": 182
+        }
+      }
+    }
+  },
+  "mixed": {
+    "5:1": {
+      "methods": {
+        "explicit_only": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.05800746723864371,
+              "ci95": [
+                0.04319274065477007,
+                0.07450550800180211
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.04253608946725482,
+              "ci95": [
+                0.03238593538802833,
+                0.05311607525686408
+              ]
+            },
+            "map@10": {
+              "mean": 0.022421388888888887,
+              "ci95": [
+                0.0158103244047619,
+                0.030055860449735444
+              ]
+            },
+            "recall@20": {
+              "mean": 0.11016577004694651,
+              "ci95": [
+                0.08794842236684883,
+                0.13147004769250356
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.05982534647031937,
+              "ci95": [
+                0.04925901509408493,
+                0.07248689538965378
+              ]
+            },
+            "map@20": {
+              "mean": 0.026062480959974356,
+              "ci95": [
+                0.019607268133648114,
+                0.03328581311462103
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0023000000000000004,
+              "ci95": [
+                0.0013,
+                0.0034
+              ]
+            }
+          }
+        },
+        "implicit_only": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.10601154012654013,
+              "ci95": [
+                0.08706137733100232,
+                0.12308268029193029
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.0884107469147647,
+              "ci95": [
+                0.07431966561456887,
+                0.10294594309770556
+              ]
+            },
+            "map@10": {
+              "mean": 0.049812516061980346,
+              "ci95": [
+                0.03833007487717309,
+                0.06017037622826908
+              ]
+            },
+            "recall@20": {
+              "mean": 0.17072916916416914,
+              "ci95": [
+                0.14801463904151405,
+                0.1918959951437451
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.11016698700673558,
+              "ci95": [
+                0.0961616472491526,
+                0.1259702406381107
+              ]
+            },
+            "map@20": {
+              "mean": 0.054492331848164884,
+              "ci95": [
+                0.043483805973668556,
+                0.06595662470531954
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0040999999999999995,
+              "ci95": [
+                0.0026975000000000002,
+                0.0055
+              ]
+            }
+          }
+        },
+        "mixed": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.11097991619491619,
+              "ci95": [
+                0.09167253257853257,
+                0.12835718063880563
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.08997531183452061,
+              "ci95": [
+                0.07435125944743066,
+                0.10580602190802312
+              ]
+            },
+            "map@10": {
+              "mean": 0.051481970899470895,
+              "ci95": [
+                0.03939558763227514,
+                0.062361710978835964
+              ]
+            },
+            "recall@20": {
+              "mean": 0.17677003467121113,
+              "ci95": [
+                0.15415425580628525,
+                0.1990950484074749
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.11175818487436291,
+              "ci95": [
+                0.09684956889066881,
+                0.12747281330680646
+              ]
+            },
+            "map@20": {
+              "mean": 0.05617481081507788,
+              "ci95": [
+                0.04509518078164951,
+                0.06819250739371031
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.004,
+              "ci95": [
+                0.0027,
+                0.005300000000000001
+              ]
+            }
+          }
+        }
+      },
+      "paired_mixed_vs_explicit": {
+        "ndcg@20_delta": 0.051932838404043544,
+        "ci95": [
+          0.03922113290039162,
+          0.06427515602419402
+        ],
+        "users": 500
+      }
+    },
+    "5:3": {
+      "methods": {
+        "explicit_only": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.08435230850848498,
+              "ci95": [
+                0.06720964458907105,
+                0.10304336448273947
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.06094409012382764,
+              "ci95": [
+                0.05021739406598838,
+                0.07168736584801422
+              ]
+            },
+            "map@10": {
+              "mean": 0.02903407848324515,
+              "ci95": [
+                0.02288423109567901,
+                0.03507058052248677
+              ]
+            },
+            "recall@20": {
+              "mean": 0.1243450604624134,
+              "ci95": [
+                0.10561917391921805,
+                0.1438716878399378
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.0747642650943847,
+              "ci95": [
+                0.06309553167817955,
+                0.08629790486572522
+              ]
+            },
+            "map@20": {
+              "mean": 0.031724777269714254,
+              "ci95": [
+                0.02615731936282556,
+                0.03786160304501359
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0025999999999999994,
+              "ci95": [
+                0.0016,
+                0.003602499999999998
+              ]
+            }
+          }
+        },
+        "implicit_only": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.10601154012654013,
+              "ci95": [
+                0.08706137733100232,
+                0.12308268029193029
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.0884107469147647,
+              "ci95": [
+                0.07431966561456887,
+                0.10294594309770556
+              ]
+            },
+            "map@10": {
+              "mean": 0.049812516061980346,
+              "ci95": [
+                0.03833007487717309,
+                0.06017037622826908
+              ]
+            },
+            "recall@20": {
+              "mean": 0.17072916916416914,
+              "ci95": [
+                0.14801463904151405,
+                0.1918959951437451
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.11016698700673558,
+              "ci95": [
+                0.0961616472491526,
+                0.1259702406381107
+              ]
+            },
+            "map@20": {
+              "mean": 0.054492331848164884,
+              "ci95": [
+                0.043483805973668556,
+                0.06595662470531954
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0040999999999999995,
+              "ci95": [
+                0.0026975000000000002,
+                0.0055
+              ]
+            }
+          }
+        },
+        "mixed": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.10892657509157508,
+              "ci95": [
+                0.08959296171883671,
+                0.1284757258436008
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.08136833005257031,
+              "ci95": [
+                0.06880824203468772,
+                0.0947331377443079
+              ]
+            },
+            "map@10": {
+              "mean": 0.042895879629629624,
+              "ci95": [
+                0.0337346810515873,
+                0.05182256415343916
+              ]
+            },
+            "recall@20": {
+              "mean": 0.1676485478247243,
+              "ci95": [
+                0.14364611944999445,
+                0.19044814391409243
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.10053543523797374,
+              "ci95": [
+                0.08746682270340543,
+                0.11484643645364377
+              ]
+            },
+            "map@20": {
+              "mean": 0.04662300409614356,
+              "ci95": [
+                0.03832869569382572,
+                0.05645567262396616
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0034000000000000002,
+              "ci95": [
+                0.0022,
+                0.0046
+              ]
+            }
+          }
+        }
+      },
+      "paired_mixed_vs_explicit": {
+        "ndcg@20_delta": 0.02577117014358904,
+        "ci95": [
+          0.016701773544168703,
+          0.033594298067775176
+        ],
+        "users": 500
+      }
+    },
+    "10:1": {
+      "methods": {
+        "explicit_only": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.03794464251180835,
+              "ci95": [
+                0.029518590897238597,
+                0.0481477648712974
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.03524435376950387,
+              "ci95": [
+                0.02612497570000759,
+                0.045116835981830625
+              ]
+            },
+            "map@10": {
+              "mean": 0.016737582199546484,
+              "ci95": [
+                0.012145483441987907,
+                0.022047457128684805
+              ]
+            },
+            "recall@20": {
+              "mean": 0.08355730820569628,
+              "ci95": [
+                0.06909049822809406,
+                0.09772958647751158
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.05039412758347811,
+              "ci95": [
+                0.04222403626262438,
+                0.06032388960451443
+              ]
+            },
+            "map@20": {
+              "mean": 0.01978874017807514,
+              "ci95": [
+                0.014827901422195476,
+                0.025458485081896718
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0022,
+              "ci95": [
+                0.0013000000000000004,
+                0.0032
+              ]
+            }
+          }
+        },
+        "implicit_only": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.11866360341572349,
+              "ci95": [
+                0.10094985800228497,
+                0.13673560600871873
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.0869484961605156,
+              "ci95": [
+                0.07436259364584996,
+                0.09954430372248542
+              ]
+            },
+            "map@10": {
+              "mean": 0.041747855253212396,
+              "ci95": [
+                0.03472701621945074,
+                0.049534805650037775
+              ]
+            },
+            "recall@20": {
+              "mean": 0.1816236356201493,
+              "ci95": [
+                0.16170620570121202,
+                0.20270831833714958
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.10907335104760446,
+              "ci95": [
+                0.0949788768684046,
+                0.12265617720841146
+              ]
+            },
+            "map@20": {
+              "mean": 0.047054021773331255,
+              "ci95": [
+                0.03893635096463254,
+                0.056552970712911654
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0045,
+              "ci95": [
+                0.0030000000000000005,
+                0.006299999999999999
+              ]
+            }
+          }
+        },
+        "mixed": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.11521459964171972,
+              "ci95": [
+                0.09800518462316837,
+                0.1323214625548531
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.08352363193588812,
+              "ci95": [
+                0.07137452870749096,
+                0.09669065668401196
+              ]
+            },
+            "map@10": {
+              "mean": 0.039838335222978076,
+              "ci95": [
+                0.03253507468820862,
+                0.04805585079680019
+              ]
+            },
+            "recall@20": {
+              "mean": 0.17323752450903818,
+              "ci95": [
+                0.15329934539556891,
+                0.19582821870691114
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.10406551904845435,
+              "ci95": [
+                0.09093423555331033,
+                0.11735260565647308
+              ]
+            },
+            "map@20": {
+              "mean": 0.04475779970098496,
+              "ci95": [
+                0.03732025176834474,
+                0.05371403984409205
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0039000000000000003,
+              "ci95": [
+                0.0025,
+                0.0057
+              ]
+            }
+          }
+        }
+      },
+      "paired_mixed_vs_explicit": {
+        "ndcg@20_delta": 0.05367139146497625,
+        "ci95": [
+          0.04204395706531745,
+          0.06512279783870457
+        ],
+        "users": 500
+      }
+    },
+    "10:3": {
+      "methods": {
+        "explicit_only": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.057032336494239166,
+              "ci95": [
+                0.047029828226936014,
+                0.06851584576099282
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.05069778095961636,
+              "ci95": [
+                0.0407161337721291,
+                0.06153791641195334
+              ]
+            },
+            "map@10": {
+              "mean": 0.025434756550768454,
+              "ci95": [
+                0.0195356022297808,
+                0.03347672533226253
+              ]
+            },
+            "recall@20": {
+              "mean": 0.09097917727230219,
+              "ci95": [
+                0.07560743846760058,
+                0.10607089598875158
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.06279181410215129,
+              "ci95": [
+                0.05264826265959573,
+                0.07454917132214094
+              ]
+            },
+            "map@20": {
+              "mean": 0.02789483461678448,
+              "ci95": [
+                0.021595675851239872,
+                0.035267619973721756
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0027,
+              "ci95": [
+                0.0016,
+                0.0039000000000000003
+              ]
+            }
+          }
+        },
+        "implicit_only": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.11866360341572349,
+              "ci95": [
+                0.10094985800228497,
+                0.13673560600871873
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.0869484961605156,
+              "ci95": [
+                0.07436259364584996,
+                0.09954430372248542
+              ]
+            },
+            "map@10": {
+              "mean": 0.041747855253212396,
+              "ci95": [
+                0.03472701621945074,
+                0.049534805650037775
+              ]
+            },
+            "recall@20": {
+              "mean": 0.1816236356201493,
+              "ci95": [
+                0.16170620570121202,
+                0.20270831833714958
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.10907335104760446,
+              "ci95": [
+                0.0949788768684046,
+                0.12265617720841146
+              ]
+            },
+            "map@20": {
+              "mean": 0.047054021773331255,
+              "ci95": [
+                0.03893635096463254,
+                0.056552970712911654
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0045,
+              "ci95": [
+                0.0030000000000000005,
+                0.006299999999999999
+              ]
+            }
+          }
+        },
+        "mixed": {
+          "users": 500,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.10647457289286943,
+              "ci95": [
+                0.09090594997405739,
+                0.12404837704608611
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.08144063407493915,
+              "ci95": [
+                0.06891419386845436,
+                0.0946697979109699
+              ]
+            },
+            "map@10": {
+              "mean": 0.03985320893172084,
+              "ci95": [
+                0.03174865736803981,
+                0.04812052819507433
+              ]
+            },
+            "recall@20": {
+              "mean": 0.16319521674812426,
+              "ci95": [
+                0.14317576752168093,
+                0.1829733009048074
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.10096630174756901,
+              "ci95": [
+                0.08884803899314325,
+                0.11529056797501461
+              ]
+            },
+            "map@20": {
+              "mean": 0.044457498772268095,
+              "ci95": [
+                0.03586128442902056,
+                0.05393835817185917
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0037,
+              "ci95": [
+                0.0023975,
+                0.0051
+              ]
+            }
+          }
+        }
+      },
+      "paired_mixed_vs_explicit": {
+        "ndcg@20_delta": 0.03817448764541774,
+        "ci95": [
+          0.029889224073567578,
+          0.0472049790929293
+        ],
+        "users": 500
+      }
+    },
+    "20:1": {
+      "methods": {
+        "explicit_only": {
+          "users": 51,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.04812131930294985,
+              "ci95": [
+                0.021108911513323277,
+                0.07894686675839926
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.05607716745765346,
+              "ci95": [
+                0.026900533796389545,
+                0.09107875803341607
+              ]
+            },
+            "map@10": {
+              "mean": 0.027251270878721857,
+              "ci95": [
+                0.0105519244734931,
+                0.04816040305010893
+              ]
+            },
+            "recall@20": {
+              "mean": 0.06729786055610759,
+              "ci95": [
+                0.035034065726590014,
+                0.10433508426715961
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.061650675835303675,
+              "ci95": [
+                0.03194511288060132,
+                0.09986890634126791
+              ]
+            },
+            "map@20": {
+              "mean": 0.02689006987692716,
+              "ci95": [
+                0.010140639439382081,
+                0.047414731861273166
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.00392156862745098,
+              "ci95": [
+                0.000980392156862745,
+                0.00784313725490196
+              ]
+            }
+          }
+        },
+        "implicit_only": {
+          "users": 51,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.12174825363768818,
+              "ci95": [
+                0.07692447134032843,
+                0.17847471323266217
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.10969367171503516,
+              "ci95": [
+                0.07122160653389605,
+                0.1510783999258462
+              ]
+            },
+            "map@10": {
+              "mean": 0.05023429124736314,
+              "ci95": [
+                0.028809761558944564,
+                0.0755572954490438
+              ]
+            },
+            "recall@20": {
+              "mean": 0.1712801894103271,
+              "ci95": [
+                0.11445484666099591,
+                0.2262859766627648
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.12220742143015195,
+              "ci95": [
+                0.08491300846453331,
+                0.16914311717142083
+              ]
+            },
+            "map@20": {
+              "mean": 0.04915159750377675,
+              "ci95": [
+                0.02948747027872913,
+                0.07833941849597012
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.008823529411764707,
+              "ci95": [
+                0.0029411764705882357,
+                0.01764705882352941
+              ]
+            }
+          }
+        },
+        "mixed": {
+          "users": 51,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.11849691949510463,
+              "ci95": [
+                0.0717879122713915,
+                0.17688861952767151
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.09994359102368965,
+              "ci95": [
+                0.06551917200782131,
+                0.13978576928825331
+              ]
+            },
+            "map@10": {
+              "mean": 0.042339800117577896,
+              "ci95": [
+                0.02570602500259363,
+                0.062253198810388335
+              ]
+            },
+            "recall@20": {
+              "mean": 0.16629464081423084,
+              "ci95": [
+                0.10844837251711117,
+                0.2228077203648358
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.11384207634354149,
+              "ci95": [
+                0.0819371988827111,
+                0.15142241727547792
+              ]
+            },
+            "map@20": {
+              "mean": 0.04282048156661902,
+              "ci95": [
+                0.027722925944588056,
+                0.06273401103325833
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.008823529411764707,
+              "ci95": [
+                0.0029411764705882357,
+                0.01666666666666667
+              ]
+            }
+          }
+        }
+      },
+      "paired_mixed_vs_explicit": {
+        "ndcg@20_delta": 0.052191400508237826,
+        "ci95": [
+          0.01788774761387081,
+          0.08830294989233457
+        ],
+        "users": 51
+      }
+    },
+    "20:3": {
+      "methods": {
+        "explicit_only": {
+          "users": 51,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.03074000780399129,
+              "ci95": [
+                0.0128790291045193,
+                0.04921516833604035
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.03660617611660597,
+              "ci95": [
+                0.015851285463603954,
+                0.0584455367969417
+              ]
+            },
+            "map@10": {
+              "mean": 0.01366103848946986,
+              "ci95": [
+                0.00622869008714597,
+                0.02241761982570806
+              ]
+            },
+            "recall@20": {
+              "mean": 0.046895243068866777,
+              "ci95": [
+                0.024482112449066472,
+                0.07075960254681647
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.04043063796425905,
+              "ci95": [
+                0.02129394853824598,
+                0.05821184181846419
+              ]
+            },
+            "map@20": {
+              "mean": 0.012683889194669461,
+              "ci95": [
+                0.006276468179534308,
+                0.02029023192210491
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.0029411764705882357,
+              "ci95": [
+                0.0,
+                0.007867647058823507
+              ]
+            }
+          }
+        },
+        "implicit_only": {
+          "users": 51,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.12174825363768818,
+              "ci95": [
+                0.07692447134032843,
+                0.17847471323266217
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.10969367171503516,
+              "ci95": [
+                0.07122160653389605,
+                0.1510783999258462
+              ]
+            },
+            "map@10": {
+              "mean": 0.05023429124736314,
+              "ci95": [
+                0.028809761558944564,
+                0.0755572954490438
+              ]
+            },
+            "recall@20": {
+              "mean": 0.1712801894103271,
+              "ci95": [
+                0.11445484666099591,
+                0.2262859766627648
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.12220742143015195,
+              "ci95": [
+                0.08491300846453331,
+                0.16914311717142083
+              ]
+            },
+            "map@20": {
+              "mean": 0.04915159750377675,
+              "ci95": [
+                0.02948747027872913,
+                0.07833941849597012
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.008823529411764707,
+              "ci95": [
+                0.0029411764705882357,
+                0.01764705882352941
+              ]
+            }
+          }
+        },
+        "mixed": {
+          "users": 51,
+          "metrics": {
+            "recall@10": {
+              "mean": 0.10406336829684754,
+              "ci95": [
+                0.05673524768145512,
+                0.1569810512918631
+              ]
+            },
+            "ndcg@10": {
+              "mean": 0.08776491989886316,
+              "ci95": [
+                0.054185483083513404,
+                0.12400174734663992
+              ]
+            },
+            "map@10": {
+              "mean": 0.03607229311477677,
+              "ci95": [
+                0.021916074454473147,
+                0.055611236469896574
+              ]
+            },
+            "recall@20": {
+              "mean": 0.163939824243728,
+              "ci95": [
+                0.10670911563918041,
+                0.22111510884588356
+              ]
+            },
+            "ndcg@20": {
+              "mean": 0.10753297849565248,
+              "ci95": [
+                0.07808782208381745,
+                0.139017196429447
+              ]
+            },
+            "map@20": {
+              "mean": 0.03789186252659143,
+              "ci95": [
+                0.02487231604667091,
+                0.0559349101261428
+              ]
+            },
+            "known_negative_fraction@20": {
+              "mean": 0.008823529411764707,
+              "ci95": [
+                0.0029411764705882357,
+                0.01666666666666667
+              ]
+            }
+          }
+        }
+      },
+      "paired_mixed_vs_explicit": {
+        "ndcg@20_delta": 0.06710234053139344,
+        "ci95": [
+          0.036655720351499645,
+          0.09894891502484798
+        ],
+        "users": 51
+      }
+    }
+  },
+  "duration_seconds": 55.25049015500008,
+  "fresh_user_test_used_for_tuning": false,
+  "limitations": [
+    "One source/split; bounded1500 historically observed games",
+    "No fresh50/100-history users remain after excluding prior exposures",
+    "Metadata is static; reviewed-game library proxy and snapshot hours have exposure/temporal bias",
+    "Per-cohort intervals use distinct users; cohorts overlap and are not a causal learning curve",
+    "Cold results condition on having a cold positive; not a true new-release temporal evaluation"
+  ]
+}

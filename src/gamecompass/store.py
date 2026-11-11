@@ -119,6 +119,11 @@ class Store:
             ids = [row[0] for row in db.execute('SELECT game_id FROM games') if row[0] not in known_ids]
             return [_game_dict(db.execute('SELECT * FROM games WHERE game_id=?',(g,)).fetchone()) for g in ids]
 
+    def catalog_games(self) -> list[dict[str, Any]]:
+        """Decoded local catalog for refinements and metadata-only candidate retrieval."""
+        with self.connection() as db:
+            return [_game_dict(row) for row in db.execute('SELECT * FROM games ORDER BY game_id')]
+
     def profiles(self) -> list[dict[str, Any]]:
         with self.connection() as db:
             return [dict(row) for row in db.execute("SELECT * FROM profiles ORDER BY created,id")]

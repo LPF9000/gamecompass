@@ -12,6 +12,7 @@ from typing import Any
 import streamlit as st
 
 from gamecompass.store import RATING_LABELS, REASONS, STATUSES, Store
+from gamecompass.refinements import RecommendationFilters, catalog_filter_options, genre_facts, release_facts
 
 RATINGS = ["Haven’t played enough to judge", "Loved it", "Liked it", "Neutral", "Disliked it", "Hated it"]
 LABEL_TO_RATING = {label: value for value, label in RATING_LABELS.items()}
@@ -51,7 +52,18 @@ def game_card(store: Store, profile_id: str, game: dict[str, Any], prefix: str, 
             st.caption("Themes: " + ", ".join(game["themes"][:8]))
         if game.get("uncertainty"):
             st.caption(game["uncertainty"])
+        inferred_genres = [fact["genre"] for fact in genre_facts(game) if fact["source"] != "catalog"]
+        if inferred_genres:
+            st.caption("Genres inferred from catalog tags: " + ", ".join(inferred_genres[:6]))
+        facts = game.get('release_context') or release_facts(game)
+        if facts["original_year"] or facts["edition_year"] or facts["release_kind"] != "unknown":
+            st.caption(f"Original work: {facts['original_year'] or 'unknown'} · This edition/listing: {facts['edition_year'] or 'unknown'} · Release type: {facts['release_kind']}")
+        if facts.get('platform'):
+            st.caption(f"Release-date context: {facts['platform']} · {facts.get('edition_source','')}")
         rating_editor(store, profile_id, game, prefix)
+        if prefix != "similar" and st.button("If you liked this game", key=f"similar-seed:{prefix}:{game['game_id']}"):
+            st.session_state["similar_seed"] = game["game_id"]
+            st.rerun()
         if prefix == "discover":
             with st.expander("Evaluate this recommendation"):
                 with st.form(f"outcome:{profile_id}:{game['game_id']}"):
@@ -69,11 +81,14 @@ def game_card(store: Store, profile_id: str, game: dict[str, Any], prefix: str, 
 
 def recommendations(store: Store, profile_id: str, limit: int = 12,
                     platform: str | None = None, exclude_played: bool = True,
-                    content_explore: bool = False) -> list[dict[str, Any]]:
+                    content_explore: bool = False,
+                    filters: RecommendationFilters | None = None) -> list[dict[str, Any]]:
     try:
         from gamecompass.engine import Recommender
         with st.spinner("Updating your recommendations…"):
             options = {"content_explore": True} if content_explore else {}
+            if filters is not None:
+                options["filters"] = filters
             return Recommender(store.data_dir).recommend(profile_id, limit=limit, platform=platform, exclude_played=exclude_played, **options)
     except (FileNotFoundError, ValueError, OSError, RuntimeError) as error:
         st.warning(str(error))
@@ -82,6 +97,70 @@ def recommendations(store: Store, profile_id: str, limit: int = 12,
     except ImportError:
         st.warning("Recommendation engine is not available in this installation. Check the setup guide.")
         return []
+
+
+
+@st.cache_data(show_spinner=False)
+def _filter_options(data_dir: str, database_signature: tuple[int, int]) -> dict[str, list[str]]:
+    return catalog_filter_options(Store(Path(data_dir)))
+
+
+def discover_filters(store: Store) -> RecommendationFilters:
+    signature = store.path.stat()
+    options = _filter_options(str(store.data_dir.resolve()), (signature.st_mtime_ns, signature.st_size))
+    columns = st.columns(3)
+    with columns[0]:
+        platform = st.selectbox("Available platform", ["All platforms", *options["platforms"]], key="discover_platform")
+    with columns[1]:
+        genre = st.selectbox("Genre", ["Any genre", *options["genres"]], key="discover_genre")
+    eras = {"Any era": (None, None), "Before 1990": (1950, 1989), "1990s": (1990, 1999),
+            "2000s": (2000, 2009), "2010s": (2010, 2019), "2020s": (2020, 2029)}
+    with columns[2]:
+        era = st.selectbox("Era", list(eras), key="discover_era")
+    era_basis = "original"
+    with st.expander("Edition details"):
+        if era != "Any era":
+            use_original = st.checkbox("Use the original work’s date instead of this release’s date", value=False, key="discover_original_date")
+            era_basis = "original" if use_original else "edition"
+        policies = {"Any release type": "any", "Original versions only": "originals_only", "Remakes and remasters only": "remakes_remasters_only"}
+        edition_policy = st.selectbox("Release type", list(policies), key="discover_edition_policy")
+        st.caption("Original-release dates can differ from later editions or ports. A specific release-type filter omits records whose type is unknown.")
+    st.caption("Ratings inform your taste across the whole catalog. These controls narrow recommendations only.")
+    if not any("PlayStation" in value or "Xbox" in value or "Nintendo" in value for value in options["platforms"]):
+        st.caption("This catalog currently has no verified console availability. Console choices appear after verified metadata is added; missing availability is not treated as incompatibility.")
+    if era != "Any era":
+        st.caption("Games with an unknown " + ("original-work" if era_basis == "original" else "edition/listing") + " date are excluded by this era filter. Era normally uses this release’s date. Choose original-work dates in Edition details when you want that stricter view.")
+    lower, upper = eras[era]
+    return RecommendationFilters(platform=None if platform == "All platforms" else platform,
+                                 genre=None if genre == "Any genre" else genre,
+                                 year_min=lower, year_max=upper, era_basis=era_basis,
+                                 edition_policy=policies[edition_policy])
+
+
+def clear_similar() -> None:
+    st.session_state.pop("similar_seed", None)
+
+
+def similar_panel(store: Store, profile_id: str, game_id: str) -> None:
+    game = store.game(game_id)
+    if not game:
+        st.warning("This source game is no longer in the local catalog.")
+        st.button("Back to browsing", on_click=clear_similar)
+        return
+    st.title("If you liked " + game["title"])
+    st.caption("The selected game is the recommendation seed. This does not change your saved ratings. Your profile’s exclusions still apply.")
+    st.button("Back to browsing", on_click=clear_similar)
+    filters = discover_filters(store)
+    try:
+        from gamecompass.engine import Recommender
+        with st.spinner("Finding games from this starting point…"):
+            games = Recommender(store.data_dir).similar(game_id, limit=20, filters=filters, profile_id=profile_id)
+        if not games:
+            st.info("No games satisfy these refinements and exclusions. Broaden the filters or add verified metadata.")
+        for index, candidate in enumerate(games, 1):
+            game_card(store, profile_id, candidate, "similar", rank=index)
+    except (FileNotFoundError, ValueError, OSError, RuntimeError) as error:
+        st.warning(str(error))
 
 
 def import_csv(store: Store, profile_id: str, content: str) -> int:
@@ -207,15 +286,29 @@ def settings(store: Store, profile_id: str) -> None:
                 genre_names = st.text_input('Genres (comma-separated)')
                 theme_names = st.text_input('Themes (comma-separated)')
                 alternate_titles = st.text_input('Alternative titles (comma-separated)')
+                original_date = st.text_input('Original work release date (optional)', placeholder='1997 or 1997-01-31')
+                edition_date = st.text_input('This edition release date (optional)', placeholder='2013 or 2013-12-05')
+                release_kind = st.selectbox('Known release type', ['unknown', 'original', 'remake', 'remaster', 'rerelease'])
+                st.caption('Enter dates and release type only when verified. These assertions are labeled user-provided; original and edition dates are not interchangeable.')
                 update_existing = st.checkbox('Update an existing catalog record with this exact ID')
                 if st.form_submit_button('Save catalog game'):
                     try:
                         if store.game(canonical_id) and not update_existing:
                             raise ValueError('That canonical ID exists. Review it and explicitly select update to replace its metadata.')
+                        for value in (original_date.strip(), edition_date.strip()):
+                            if value and not (len(value) == 4 and value.isdigit() and 1950 <= int(value) <= 2200):
+                                try:
+                                    parsed_date = datetime.strptime(value, '%Y-%m-%d').date()
+                                except ValueError:
+                                    raise ValueError('Release dates must be a year or a valid YYYY-MM-DD date') from None
+                                if not 1950 <= parsed_date.year <= 2200:
+                                    raise ValueError('Release years must be between 1950 and 2200')
                         split = lambda text: [part.strip() for part in text.split(',') if part.strip()]
                         store.upsert_game({'game_id':canonical_id,'title':title,'description':description,
                             'platforms':split(platform_names),'genres':split(genre_names),'themes':split(theme_names),
-                            'metadata':{'source':'manual','identity_confidence':'user-supplied','alternative_titles':split(alternate_titles)}})
+                            'metadata':{'source':'manual','identity_confidence':'user-supplied','alternative_titles':split(alternate_titles),
+                                        'manual_release':{'source':'user-provided','original_date':original_date.strip() or None,
+                                                          'edition_date':edition_date.strip() or None,'release_kind':release_kind}}})
                         st.success('Saved locally. Search and content exploration can use this game immediately.')
                     except ValueError as error:
                         st.error(str(error))
@@ -328,12 +421,15 @@ def main() -> None:
         if st.session_state.get("selected_profile") not in names:
             st.session_state["selected_profile"] = profiles[0]["id"]
         profile_id = st.selectbox("Local profile", list(names), format_func=names.get, key="selected_profile")
-        page = st.radio("Navigation", ["Home", "Discover", "Search", "My Games", "Settings"], label_visibility="collapsed")
+        page = st.radio("Navigation", ["Home", "Discover", "Search", "My Games", "Settings"], label_visibility="collapsed", key="navigation", on_change=clear_similar)
         st.divider()
         st.caption("Offline recommendations · private local profiles")
     feedback = store.feedback(profile_id)
     if page == "Settings":
         settings(store, profile_id)
+        return
+    if st.session_state.get("similar_seed"):
+        similar_panel(store, profile_id, st.session_state["similar_seed"])
         return
     if page == "Search":
         st.title("Find a game you know")
@@ -384,18 +480,14 @@ def main() -> None:
         games = recommendations(store, profile_id)
     else:
         st.title("Discover")
-        columns = st.columns([2, 2, 1])
-        with columns[0]:
-            platform = st.selectbox("Available platform", ["All platforms", *store.platforms()])
-        with columns[1]:
-            exclude_played = st.checkbox("Exclude previously played games", value=True)
-        with columns[2]:
+        filters = discover_filters(store)
+        exclude_played = st.checkbox("Exclude previously played games", value=True)
+        with st.expander('More discovery options'):
             limit = st.selectbox("Results", [10, 20, 40], index=1)
-        content_explore = st.checkbox("Explore by game descriptions (includes games without historical interactions)", value=False)
-        sort_order = st.selectbox('Sort displayed recommendations', ['Recommendation rank','Title'])
-        st.caption("Description exploration uses a separate content baseline; its ranking has higher uncertainty for games without historical interactions.")
-        st.caption("Ranked by the selected model. Scores are ranking signals, not probabilities of enjoyment. Unknown platform metadata cannot satisfy a platform filter.")
-        games = recommendations(store, profile_id, limit=limit, platform=None if platform == "All platforms" else platform, exclude_played=exclude_played, content_explore=content_explore)
+            content_explore = st.checkbox("Explore by game descriptions (includes games without historical interactions)", value=False)
+            sort_order = st.selectbox('Sort displayed recommendations', ['Recommendation rank','Title'])
+            st.caption("Content exploration can include titles with limited player history; uncertainty is higher. Ranking scores are not probabilities of enjoyment.")
+        games = recommendations(store, profile_id, limit=limit, exclude_played=exclude_played, content_explore=content_explore, filters=filters)
         if sort_order == 'Title':
             games = sorted(games,key=lambda game:game['title'].casefold())
     if not games:

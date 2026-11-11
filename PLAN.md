@@ -41,7 +41,7 @@ No paid services, subscriptions, mandatory cloud accounts or automatic purchases
 - [x] Implement content features and compare TF-IDF/structured features against local semantic embeddings.
 - [x] Implement new-user fold-in/weighted item aggregation and signed content preference vectors without global retraining.
 - [x] Handle completely unseen games using metadata, with an honest uncertainty indication.
-- [ ] Build modular candidate generation and reranking.
+- [x] Build modular candidate generation and reranking.
 - [x] Fit or validate blend weights on validation data only; retain a simpler model if it wins.
 - [x] Persist portable, versioned artifacts with integrity checks, training provenance, atomic writes and rollback.
 
@@ -118,3 +118,32 @@ If an external dependency blocks progress, preserve completed work, implement re
 ## Evidence checkpoint
 
 Primary data is Kaggle CC0 v28, complete-user1/32 cohort (1,295,681 normalized reviews;430,864 users;50,872 catalog games). Native development benchmark1500eligible items selected by training users; production hybrid90%EASE+10%popularity pooled validation winner, with validation history routing. See docs/benchmarks.md and docs/STATUS.md for limits. Partial checkboxes remain open when complete requirements are not met.
+
+## Follow-up phase: richer evidence and fresh confirmation
+
+User authorized continuation. Existing production and previously published measurements remain the control.
+
+- [x] Audit actual feature use: Kaggle metadata.tags were collected but omitted from the v1 content vectorizer.
+- [x] Freeze fresh confirmation cohorts before any new predictions; exclude 1,351 previously inspected users, preserve original seed-42 population split.
+- [x] Fit separate description and atomic-tag channels; validate supervised content-to-CF projection on validation users only.
+- [x] Separate aggregate observed review approval from review-count popularity and validate their contributions.
+- [x] Compare better new-user neural fold-in methods using existing population factors and validation users only.
+- [x] Validate explicit-plus-implicit combinations without converting activity into persistent enjoyment labels.
+- [x] Validate multi-channel ranking weights and explicit candidate-generation interfaces; normalize offline and serving scores over the same reference universe.
+- [x] Freeze every candidate configuration before fresh confirmation, score once and report paired uncertainty without test-driven tuning.
+- [x] Integrate validated improvements behind portable versioned artifacts, verify UI/offline behavior and publish the source/results.
+
+Fresh confirmation: 500 users per support length 0/1/3/5/10, 51 at20, none unexposed at50/100. The missing high-history cohorts must remain explicit. Protocol SHA256:7fbc64536849ba16d71cf8e2315034c32488ab466b6801e6d8134614a1c2e4d6. This phase does not change the dataset source or quietly expand the measured item universe.
+
+## User refinement: catalog-wide taste, simple recommendation controls
+
+Ratings may come from any catalog game; recommendation filters must not limit which ratings inform taste. Keep the main interface simple with optional platform/console, genre and era refinements. Combine them when requested.
+
+- [x] Add typed platform, genre and era filters applied to recommendation candidates, independently of preference history.
+- [x] Distinguish original-work release dates from edition/platform release dates. A later port, HD edition, remake or remaster must not silently reset the original game's era.
+- [x] Provide a compact optional choice for including later editions/re-releases; retain separate edition IDs and uncertain relationships rather than merging names.
+- [x] Add contextual 'If you liked this game' recommendations on a game view without changing the user's saved rating.
+- [x] Show missing release/platform evidence clearly; do not guess console availability or original release dates from a Steam listing date.
+- [x] Test combined filters, remakes/remasters/ports, unknown dates, and full-history personalization while filtering candidates.
+
+Verified modern console and original-work metadata still require enrichment or user-supplied evidence. Controls can be implemented now; catalog coverage must remain explicit.

@@ -1,4 +1,6 @@
-# Delivered local research application
+# Historical v0.1 delivery
+
+For the current follow-up release, see followup-v2.md, fresh-v2.md and STATUS.md. Counts below record the original delivery rather than the enlarged v0.2 catalog.
 
 Public repository: https://github.com/LPF9000/gamecompass . Execution checklist: PLAN.md. Acceptance details: docs/STATUS.md. This is a working first research release, not a claim that every long-term accuracy ambition has been achieved.
 

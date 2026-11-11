@@ -38,3 +38,14 @@ Source datasets and private profiles remain outside Git. The repository contains
 ## Validation record
 
 Main Python 3.12 suite: **58 passed, 1 skipped** (the optional real RecBole resume test requires its separate environment). RecBole Python 3.11 environment: **4 passed**, including real interrupted/resumed training equivalence. Compile checks and git whitespace checks pass. Streamlit launch health returned HTTP 200. AppTest additionally rendered Home, Discover and Settings using the real Kaggle-trained artifact. Freshly extracted ready-data bundle generated recommendations; it contains 50,872 catalog entries and no population interaction table or personal profiles.
+
+## Follow-up v0.2 evidence
+
+- Corrected the omitted Kaggle gameplay-tag channel and fitted portable structured-content projection. Fresh-user confirmation is in fresh-v2.md; the main collaborative model remains unchanged because additional global blend/quality/neural methods did not earn promotion.
+- Mixed explicit/imported personalization is enabled only in its validated 5–20 CF-mapped history / 1–3 nonneutral explicit-rating scope. Raw activity never becomes a saved enjoyment label.
+- Added platform, genre and era refinements, original/edition/platform date evidence, and temporary 'If you liked this game' seeds without restricting rating history.
+- Added 1,475 separate Wikidata-backed catalog entities with console facts, expanding the ready catalog to 52,347 records. Steam platforms/dates and population training data are unchanged. Three records have positive relative-parent-work date evidence; other unknown original dates remain unknown.
+- Console metadata and candidate filtering are exercised with real data, including Switch RPGs and PS5 releases with platform-qualified dates. This is not a console-specific enjoyment benchmark.
+- Main integrated suite: 121 passed / one optional RecBole test skipped. A real v2 runtime generated recommendations and preserved profile ratings during contextual retrieval.
+
+Still open: live Steam/IGDB account verification, deeper original-work/edition coverage, larger or independent gaming datasets, mixed-signal behavior beyond validated history ranges, high-history untouched cohorts and real personal satisfaction testing.

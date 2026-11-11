@@ -93,3 +93,37 @@ def test_imported_implicit_personalization_and_explicit_precedence(ready,tmp_pat
     store.set_feedback(p,'steam:0',2,'played')
     explicit=Recommender(tmp_path).recommend(p,limit=1)[0]
     assert 'explicit likes and dislikes' in explicit['explanation']
+
+
+def test_contextual_seed_and_candidate_filters_preserve_history(ready,tmp_path):
+    from gamecompass.refinements import RecommendationFilters
+    store,p=ready
+    store.set_feedback(p,'steam:1',2,'completed')
+    before=store.export_profile(p)
+    matches=Recommender(tmp_path).similar('steam:0',profile_id=p,filters=RecommendationFilters(genre='Racing'))
+    assert matches and all('Racing' in g['genres'] for g in matches)
+    assert 'steam:0' not in {g['game_id'] for g in matches}
+    assert store.export_profile(p)==before
+    assert Recommender(tmp_path).similar('steam:0',filters=RecommendationFilters(platform='PS5'))==[]
+
+
+def test_filtering_candidates_keeps_preferences_from_other_genres(ready,tmp_path,monkeypatch):
+    from gamecompass.refinements import RecommendationFilters
+    store,p=ready;store.set_feedback(p,'steam:5',2,'played')
+    observed=[];score=Model.score
+    def record(self,support,algorithm=None):
+        observed.append(dict(support));return score(self,support,algorithm)
+    monkeypatch.setattr(Model,'score',record)
+    results=Recommender(tmp_path).recommend(p,filters=RecommendationFilters(genre='Adventure'))
+    assert results and all('Adventure' in r['genres'] for r in results)
+    assert observed and all('steam:5' in s for s in observed)
+
+
+def test_source_link_exclusion_is_not_a_transferred_rating(ready,tmp_path):
+    store,p=ready
+    store.upsert_game({'game_id':'wikidata:Q99','title':'Separate source record','description':'exploration story',
+                       'genres':['Adventure'],'metadata':{'wikidata':{'related_steam_game_ids':['steam:0']}}})
+    store.set_feedback(p,'wikidata:Q99',2,'played')
+    results=Recommender(tmp_path).recommend(p,limit=8,exclude_played=True)
+    assert 'steam:0' not in {g['game_id'] for g in results}
+    assert {f['game_id'] for f in store.feedback(p)}=={'wikidata:Q99'}

@@ -1,0 +1,148 @@
+{
+  "candidate_entries": 5,
+  "queried_parent_entities": 3,
+  "resolved_entries": 3,
+  "outcomes": [
+    {
+      "game_id": "wikidata:Q101076778",
+      "title": "Cave Story+",
+      "status": "unknown",
+      "reason": "parent is not an explicitly identified individual video-game work",
+      "date": null
+    },
+    {
+      "game_id": "wikidata:Q1051853",
+      "title": "Cave Story",
+      "status": "unknown",
+      "reason": "parent is not an explicitly identified individual video-game work",
+      "date": null
+    },
+    {
+      "game_id": "wikidata:Q110752642",
+      "title": "The Witcher: Enhanced Edition",
+      "status": "resolved_relative_parent_work",
+      "reason": "explicit bidirectional P629/P747 work-edition relation",
+      "date": {
+        "iso": "2007-10-26",
+        "precision": 11,
+        "parent_entity_id": "Q287637",
+        "parent_entity_url": "https://www.wikidata.org/wiki/Q287637",
+        "parent_type_facts": [
+          {
+            "property": "P31",
+            "value": "http://www.wikidata.org/entity/Q7889",
+            "statement": "http://www.wikidata.org/entity/statement/q287637-5B4F7E74-F823-45B9-91A4-179E3203EF32",
+            "rank": "NormalRank",
+            "precision": null,
+            "qualifiers": {},
+            "reference_urls": []
+          }
+        ],
+        "parent_edition_relations": [],
+        "relation": "P629",
+        "relation_statement": "http://www.wikidata.org/entity/statement/Q110752642-c2a2dd04-4319-ac24-3dac-4c36f9c80dcc",
+        "reciprocal_relation_statement": "http://www.wikidata.org/entity/statement/Q287637-f900a493-484c-c8f1-b990-22fcc367d697",
+        "publication_statement": "http://www.wikidata.org/entity/statement/Q287637-A7E7D602-5CEB-49B7-BCE2-84FC6433FED3",
+        "publication_qualifiers": {},
+        "reference_urls": [],
+        "source": "Wikidata explicit P629 parent work; earliest known publication",
+        "semantics": "relative parent-work publication, not proof of ultimate original work or a console port date"
+      }
+    },
+    {
+      "game_id": "wikidata:Q16267780",
+      "title": "Age of Empires II: HD Edition",
+      "status": "resolved_relative_parent_work",
+      "reason": "explicit bidirectional P629/P747 work-edition relation",
+      "date": {
+        "iso": "1999-09-27",
+        "precision": 11,
+        "parent_entity_id": "Q34852",
+        "parent_entity_url": "https://www.wikidata.org/wiki/Q34852",
+        "parent_type_facts": [
+          {
+            "property": "P31",
+            "value": "http://www.wikidata.org/entity/Q112144412",
+            "statement": "http://www.wikidata.org/entity/statement/Q34852-deca4a55-4696-ab61-819f-ff7a22bbc82a",
+            "rank": "NormalRank",
+            "precision": null,
+            "qualifiers": {},
+            "reference_urls": []
+          },
+          {
+            "property": "P31",
+            "value": "http://www.wikidata.org/entity/Q7889",
+            "statement": "http://www.wikidata.org/entity/statement/q34852-F6D5A9FA-08B1-4AA1-BFA2-86F17C1E15AE",
+            "rank": "NormalRank",
+            "precision": null,
+            "qualifiers": {},
+            "reference_urls": []
+          }
+        ],
+        "parent_edition_relations": [],
+        "relation": "P629",
+        "relation_statement": "http://www.wikidata.org/entity/statement/Q16267780-ed93efe6-e9be-49fb-a8dc-8c68f9b93fde",
+        "reciprocal_relation_statement": "http://www.wikidata.org/entity/statement/Q34852-7677eb69-41d6-0da0-fb49-d81c11a61b65",
+        "publication_statement": "http://www.wikidata.org/entity/statement/q34852-cbd952aa-4342-f4e4-14ca-ce9463cc64f5",
+        "publication_qualifiers": {
+          "P400": [
+            "http://www.wikidata.org/entity/Q1406"
+          ]
+        },
+        "reference_urls": [],
+        "source": "Wikidata explicit P629 parent work; earliest known publication",
+        "semantics": "relative parent-work publication, not proof of ultimate original work or a console port date"
+      }
+    },
+    {
+      "game_id": "wikidata:Q63463133",
+      "title": "Age of Empires II: Definitive Edition",
+      "status": "resolved_relative_parent_work",
+      "reason": "explicit bidirectional P629/P747 work-edition relation",
+      "date": {
+        "iso": "1999-09-27",
+        "precision": 11,
+        "parent_entity_id": "Q34852",
+        "parent_entity_url": "https://www.wikidata.org/wiki/Q34852",
+        "parent_type_facts": [
+          {
+            "property": "P31",
+            "value": "http://www.wikidata.org/entity/Q112144412",
+            "statement": "http://www.wikidata.org/entity/statement/Q34852-deca4a55-4696-ab61-819f-ff7a22bbc82a",
+            "rank": "NormalRank",
+            "precision": null,
+            "qualifiers": {},
+            "reference_urls": []
+          },
+          {
+            "property": "P31",
+            "value": "http://www.wikidata.org/entity/Q7889",
+            "statement": "http://www.wikidata.org/entity/statement/q34852-F6D5A9FA-08B1-4AA1-BFA2-86F17C1E15AE",
+            "rank": "NormalRank",
+            "precision": null,
+            "qualifiers": {},
+            "reference_urls": []
+          }
+        ],
+        "parent_edition_relations": [],
+        "relation": "P629",
+        "relation_statement": "http://www.wikidata.org/entity/statement/Q63463133-b71dd4d0-45c7-f603-5a7d-caeef5d6c544",
+        "reciprocal_relation_statement": "http://www.wikidata.org/entity/statement/Q34852-b60efe2b-4bf4-61a9-d941-1525bbea43c3",
+        "publication_statement": "http://www.wikidata.org/entity/statement/q34852-cbd952aa-4342-f4e4-14ca-ce9463cc64f5",
+        "publication_qualifiers": {
+          "P400": [
+            "http://www.wikidata.org/entity/Q1406"
+          ]
+        },
+        "reference_urls": [],
+        "source": "Wikidata explicit P629 parent work; earliest known publication",
+        "semantics": "relative parent-work publication, not proof of ultimate original work or a console port date"
+      }
+    }
+  ],
+  "source_population_unchanged_sha256": "e873ed8dc766549b66d69496a6580d38242fa84786f6ce029609241b94e0a76f",
+  "applied_to_local_catalog": true,
+  "catalog_bytes": 9032598,
+  "catalog_sha256": "d034ffd4bceae9514359eb3253b1bb19a441958dd2aa3b60d308defd3fe1b300",
+  "semantics": "Explicit P629 relative-parent work date, not ultimate-original inference"
+}

@@ -4,6 +4,12 @@ Free, open-source, local-first game recommendation research and a working local 
 
 **Status: working research application, not a demonstrated state-of-the-art recommender.** Real Steam data has been acquired, processed and benchmarked. Development evaluations use a deterministic complete-user cohort and a bounded item universe. Read measured results and known limitations before interpreting accuracy claims.
 
+## Current follow-up release
+
+V0.2 adds Platform/Genre/Era refinements, edition and platform-release date handling, contextual “If you liked this game”, richer gameplay-tag content features, and bounded explicit-plus-library personalization. The main collaborative ranking remains the measured control. See [follow-up guide](docs/followup-v2.md) and [fresh-user confirmation](docs/fresh-v2.md).
+
+The updated ready-data bundle includes 1,475 separate Wikidata source entities with their own console facts, in addition to the 50,872-game Steam catalog. These entries are metadata-ranked; no console-specific enjoyment accuracy is established. Original-work dates remain unknown unless supported by positive source evidence. A platform-specific era never uses an unqualified global date as a console port date.
+
 ## Quick start
 
 Requires Python 3.12 and about 3 GB free disk for default data/workflow (more for optional research environments). CPU supported; no GPU required for the default pipeline. The measured environment has approximately 10 GiB RAM. Windows/macOS installation has not been verified in this session.

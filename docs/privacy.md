@@ -9,3 +9,5 @@ Steam credentials are environment variables used only for authorized requests to
 JSON/CSV exports contain personal data and are created only on request. Keep them private. Deleting a profile cascades associated feedback, connections, implicit history, outcomes and personal evaluation records in the local database. Independently saved exports/backups/manual training snapshots are separate copies and must be removed independently. Deletion is not a forensic disk-erasure guarantee.
 
 No future sharing is enabled by default. Any shared learning feature must require explicit, granular opt-in and a documented export preview. Current manual retraining uses the downloaded population dataset; immediate personalization uses local feedback without altering that dataset.
+
+Optional Wikidata metadata acquisition contacts the official service using public game identifiers. It does not send profiles, ratings or population user identifiers. Inference uses cached metadata offline. Source-entity records remain separate from Steam editions; no personal labels are copied between them.

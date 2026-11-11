@@ -27,3 +27,11 @@ This release is a working local research application. It does not establish exce
 - Fine-tune content embeddings on real preference pairs with leakage-safe splits before expecting generic sentence models to beat collaborative signals.
 - Add calibrated enjoyment estimates only after validation on representative explicit labels; do not relabel raw ranking scores.
 - Improve responsive background-job controls and packaging after recommendation quality is independently tested.
+
+## V0.2 follow-up
+
+Fresh confirmation and changed conclusions are in fresh-v2.md. Structured tags were omitted by the v1 content path; v2 corrects this and shows limited positive cold-item evidence. Mixed explicit/imported profiles are improved within their validated 5–20 mapped-game and 1–3 explicit-rating scope, with reviewed-library and snapshot-hours caveats. Broader global blending, aggregate approval and advanced neural fold-in did not justify replacing the main ranking.
+
+The enriched ready bundle has separate Wikidata-backed console entities. Their recommendation accuracy is not measured by the Steam-only 1,500-game benchmark. Earliest entity publication, selected-platform publication and source-defined parent-work publication have distinct meanings. Original-work dates and edition kinds remain incomplete, so strict original-era/remake filters can exclude many records with unknown facts.
+
+The main collaborative component still represents the bounded 1,500-game training universe. Ratings outside it remain stored and can inform content exploration, metadata fallback and contextual recommendations, but are not automatically assigned invented collaborative factors or forced into an unvalidated global blend. Expanding that coverage and validating partially represented profiles remain explicit follow-up work.

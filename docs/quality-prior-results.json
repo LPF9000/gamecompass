@@ -1,0 +1,349 @@
+{
+  "format_version": 1,
+  "experiment": "validation-only aggregate approval prior",
+  "seed": 42,
+  "max_items": 1500,
+  "max_users_per_history": 300,
+  "validation_queries": 900,
+  "history_lengths": [
+    1,
+    3,
+    5
+  ],
+  "model_version": "development-1500-42-20261111T004254213166Z",
+  "baseline_algorithm": "hybrid",
+  "source_dataset": {
+    "license": "CC0: Public Domain (publisher declaration in Kaggle API)",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "listing_url": "https://www.kaggle.com/api/v1/datasets/list?search=game-recommendations-on-steam",
+    "ref": "antonkozyriev/game-recommendations-on-steam",
+    "url": "https://www.kaggle.com/api/v1/datasets/download/antonkozyriev/game-recommendations-on-steam?datasetVersionNumber=28",
+    "version": 28
+  },
+  "dataset_sha256": "e873ed8dc766549b66d69496a6580d38242fa84786f6ce029609241b94e0a76f",
+  "scope": "numeric source user_id % 32 == 0; complete selected histories",
+  "quality_artifact": "data/quality/prior",
+  "training_positive_labels": 658217,
+  "training_negative_labels": 109123,
+  "global_observed_approval": 0.8577905491698595,
+  "train_rows_sha256": "e31017b1296dd13f112daca4cca2f3bb805e4d82c49afdce5a8f374455fb5080",
+  "count_quantiles": {
+    "0": 80.0,
+    "0.25": 137.0,
+    "0.5": 226.0,
+    "0.75": 548.5,
+    "0.9": 1194.4000000000005,
+    "1": 7647.0
+  },
+  "approval_quantiles_strength20": {
+    "0": 0.1351119074345144,
+    "0.25": 0.8174641216828915,
+    "0.5": 0.8895226327014416,
+    "0.75": 0.9357746892534882,
+    "0.9": 0.9579058212278294,
+    "1": 0.9922509535221836
+  },
+  "selected": {
+    "prior_strength": 20.0,
+    "quality_weight": 0.05,
+    "kind": "baseline blend",
+    "metrics": {
+      "recall@10": 0.10151715411065915,
+      "ndcg@10": 0.08052393411676599,
+      "map@10": 0.04725843358948518,
+      "recall@20": 0.15619685305506367,
+      "ndcg@20": 0.09609978418852178,
+      "map@20": 0.049691306729029584,
+      "explicit_negative_fraction@20": 0.0017777777777777776
+    },
+    "catalog_coverage@20": 0.618
+  },
+  "trials": [
+    {
+      "prior_strength": 5.0,
+      "quality_weight": 0.0,
+      "kind": "baseline blend",
+      "metrics": {
+        "recall@10": 0.1039249894747092,
+        "ndcg@10": 0.08081449449842248,
+        "map@10": 0.0468999349122365,
+        "recall@20": 0.15638264581995248,
+        "ndcg@20": 0.0960136959508218,
+        "map@20": 0.049214878794280485,
+        "explicit_negative_fraction@20": 0.0021111111111111113
+      },
+      "catalog_coverage@20": 0.628
+    },
+    {
+      "prior_strength": 5.0,
+      "quality_weight": 0.05,
+      "kind": "baseline blend",
+      "metrics": {
+        "recall@10": 0.10151715411065915,
+        "ndcg@10": 0.08051290984216007,
+        "map@10": 0.04724639655244814,
+        "recall@20": 0.15508574194395255,
+        "ndcg@20": 0.09584837453089978,
+        "map@20": 0.04963688227564903,
+        "explicit_negative_fraction@20": 0.0017777777777777776
+      },
+      "catalog_coverage@20": 0.6186666666666667
+    },
+    {
+      "prior_strength": 5.0,
+      "quality_weight": 0.1,
+      "kind": "baseline blend",
+      "metrics": {
+        "recall@10": 0.09841193656455012,
+        "ndcg@10": 0.0799521689442061,
+        "map@10": 0.04724808988410179,
+        "recall@20": 0.15172670741018685,
+        "ndcg@20": 0.09473292283359588,
+        "map@20": 0.04936269903122401,
+        "explicit_negative_fraction@20": 0.0015555555555555555
+      },
+      "catalog_coverage@20": 0.6033333333333334
+    },
+    {
+      "prior_strength": 5.0,
+      "quality_weight": 0.25,
+      "kind": "baseline blend",
+      "metrics": {
+        "recall@10": 0.08937236317316222,
+        "ndcg@10": 0.07561766221870364,
+        "map@10": 0.04528138210016517,
+        "recall@20": 0.13741265677792386,
+        "ndcg@20": 0.08892490927961096,
+        "map@20": 0.04706256335048888,
+        "explicit_negative_fraction@20": 0.0011666666666666668
+      },
+      "catalog_coverage@20": 0.5526666666666666
+    },
+    {
+      "prior_strength": 5.0,
+      "quality_weight": 0.5,
+      "kind": "baseline blend",
+      "metrics": {
+        "recall@10": 0.05646466730171365,
+        "ndcg@10": 0.05255262366487287,
+        "map@10": 0.03158442827748383,
+        "recall@20": 0.07456966875466389,
+        "ndcg@20": 0.056474583641404036,
+        "map@20": 0.0313251043721891,
+        "explicit_negative_fraction@20": 0.0003888888888888889
+      },
+      "catalog_coverage@20": 0.3466666666666667
+    },
+    {
+      "prior_strength": 5.0,
+      "quality_weight": 1.0,
+      "kind": "standalone approval",
+      "metrics": {
+        "recall@10": 0.005592592592592593,
+        "ndcg@10": 0.003627378472691141,
+        "map@10": 0.0019537037037037036,
+        "recall@20": 0.00877599452109256,
+        "ndcg@20": 0.005088387414989014,
+        "map@20": 0.0021743003378280295,
+        "explicit_negative_fraction@20": 0.0
+      },
+      "catalog_coverage@20": 0.014
+    },
+    {
+      "prior_strength": 20.0,
+      "quality_weight": 0.0,
+      "kind": "baseline blend",
+      "metrics": {
+        "recall@10": 0.1039249894747092,
+        "ndcg@10": 0.08081449449842248,
+        "map@10": 0.0468999349122365,
+        "recall@20": 0.15638264581995248,
+        "ndcg@20": 0.0960136959508218,
+        "map@20": 0.049214878794280485,
+        "explicit_negative_fraction@20": 0.0021111111111111113
+      },
+      "catalog_coverage@20": 0.628
+    },
+    {
+      "prior_strength": 20.0,
+      "quality_weight": 0.05,
+      "kind": "baseline blend",
+      "metrics": {
+        "recall@10": 0.10151715411065915,
+        "ndcg@10": 0.08052393411676599,
+        "map@10": 0.04725843358948518,
+        "recall@20": 0.15619685305506367,
+        "ndcg@20": 0.09609978418852178,
+        "map@20": 0.049691306729029584,
+        "explicit_negative_fraction@20": 0.0017777777777777776
+      },
+      "catalog_coverage@20": 0.618
+    },
+    {
+      "prior_strength": 20.0,
+      "quality_weight": 0.1,
+      "kind": "baseline blend",
+      "metrics": {
+        "recall@10": 0.09841193656455012,
+        "ndcg@10": 0.07988427607089034,
+        "map@10": 0.047167865016376924,
+        "recall@20": 0.15182771751119692,
+        "ndcg@20": 0.09474076614792867,
+        "map@20": 0.04930819764635413,
+        "explicit_negative_fraction@20": 0.0015555555555555555
+      },
+      "catalog_coverage@20": 0.6006666666666667
+    },
+    {
+      "prior_strength": 20.0,
+      "quality_weight": 0.25,
+      "kind": "baseline blend",
+      "metrics": {
+        "recall@10": 0.09122421502501407,
+        "ndcg@10": 0.07669140529910651,
+        "map@10": 0.04578358668570309,
+        "recall@20": 0.14184030633863792,
+        "ndcg@20": 0.09114330692595439,
+        "map@20": 0.04786534470661172,
+        "explicit_negative_fraction@20": 0.0012777777777777779
+      },
+      "catalog_coverage@20": 0.5513333333333333
+    },
+    {
+      "prior_strength": 20.0,
+      "quality_weight": 0.5,
+      "kind": "baseline blend",
+      "metrics": {
+        "recall@10": 0.06900518340601594,
+        "ndcg@10": 0.06032037708670976,
+        "map@10": 0.03544147350298144,
+        "recall@20": 0.10094318984096473,
+        "ndcg@20": 0.06903468342499212,
+        "map@20": 0.03652596783347122,
+        "explicit_negative_fraction@20": 0.0005555555555555556
+      },
+      "catalog_coverage@20": 0.3993333333333333
+    },
+    {
+      "prior_strength": 20.0,
+      "quality_weight": 1.0,
+      "kind": "standalone approval",
+      "metrics": {
+        "recall@10": 0.013376619677197962,
+        "ndcg@10": 0.012902069833859218,
+        "map@10": 0.006893413538254808,
+        "recall@20": 0.02395030366189413,
+        "ndcg@20": 0.016583761415999917,
+        "map@20": 0.007568399545498141,
+        "explicit_negative_fraction@20": 0.0003333333333333334
+      },
+      "catalog_coverage@20": 0.014666666666666666
+    },
+    {
+      "prior_strength": 100.0,
+      "quality_weight": 0.0,
+      "kind": "baseline blend",
+      "metrics": {
+        "recall@10": 0.1039249894747092,
+        "ndcg@10": 0.08081449449842248,
+        "map@10": 0.0468999349122365,
+        "recall@20": 0.15638264581995248,
+        "ndcg@20": 0.0960136959508218,
+        "map@20": 0.049214878794280485,
+        "explicit_negative_fraction@20": 0.0021111111111111113
+      },
+      "catalog_coverage@20": 0.628
+    },
+    {
+      "prior_strength": 100.0,
+      "quality_weight": 0.05,
+      "kind": "baseline blend",
+      "metrics": {
+        "recall@10": 0.1022502722166586,
+        "ndcg@10": 0.08079811375674928,
+        "map@10": 0.04727505616444109,
+        "recall@20": 0.15622274012049875,
+        "ndcg@20": 0.09608175251397082,
+        "map@20": 0.049640180876146835,
+        "explicit_negative_fraction@20": 0.0017777777777777776
+      },
+      "catalog_coverage@20": 0.6173333333333333
+    },
+    {
+      "prior_strength": 100.0,
+      "quality_weight": 0.1,
+      "kind": "baseline blend",
+      "metrics": {
+        "recall@10": 0.09843951557468728,
+        "ndcg@10": 0.07974531385044735,
+        "map@10": 0.04703343306458386,
+        "recall@20": 0.15324522592870532,
+        "ndcg@20": 0.09513113857031859,
+        "map@20": 0.04939153297773015,
+        "explicit_negative_fraction@20": 0.0015555555555555555
+      },
+      "catalog_coverage@20": 0.596
+    },
+    {
+      "prior_strength": 100.0,
+      "quality_weight": 0.25,
+      "kind": "baseline blend",
+      "metrics": {
+        "recall@10": 0.09346495576575481,
+        "ndcg@10": 0.07726160920844083,
+        "map@10": 0.04595652907253436,
+        "recall@20": 0.14484667394012166,
+        "ndcg@20": 0.09196997203846387,
+        "map@20": 0.04811761813511583,
+        "explicit_negative_fraction@20": 0.0013333333333333333
+      },
+      "catalog_coverage@20": 0.5393333333333333
+    },
+    {
+      "prior_strength": 100.0,
+      "quality_weight": 0.5,
+      "kind": "baseline blend",
+      "metrics": {
+        "recall@10": 0.07040060507439418,
+        "ndcg@10": 0.06230325626368014,
+        "map@10": 0.03664405321799502,
+        "recall@20": 0.11222025508932978,
+        "ndcg@20": 0.07392210675153317,
+        "map@20": 0.03849220398943057,
+        "explicit_negative_fraction@20": 0.0007222222222222223
+      },
+      "catalog_coverage@20": 0.38133333333333336
+    },
+    {
+      "prior_strength": 100.0,
+      "quality_weight": 1.0,
+      "kind": "standalone approval",
+      "metrics": {
+        "recall@10": 0.024328137835544408,
+        "ndcg@10": 0.020546224155161438,
+        "map@10": 0.01026228321575544,
+        "recall@20": 0.04404651589038835,
+        "ndcg@20": 0.026920479217924547,
+        "map@20": 0.011254307318812499,
+        "explicit_negative_fraction@20": 0.0002777777777777778
+      },
+      "catalog_coverage@20": 0.015333333333333332
+    }
+  ],
+  "selected_minus_baseline_ndcg20": {
+    "mean": 8.608823769996147e-05,
+    "query_bootstrap_ci95": [
+      -0.001536631196661103,
+      0.0017502524914691214
+    ]
+  },
+  "protocol": "Fit positive/negative counts only from prepare.train_rows after whole-user split and warm holdout. Rank full same 1500 eligible CF IDs excluding support. Baseline is frozen selected population model. Only original validation users scored; no test scoring. Both component channels max-absolute scaled over eligible CF items; quality is centered log odds vs global observed approval. Grid chooses pooled validation NDCG20; standalone approval is diagnostic, not eligible production blend.",
+  "limitations": [
+    "Validation selection is optimistic; requires fresh untouched evaluation before claiming an accuracy gain.",
+    "Repeated users across histories make query bootstrap intervals descriptive and not independent-user significance tests.",
+    "Aggregate reviewer approval reflects selection, exposure, era and review participation; not a personalized enjoyment probability.",
+    "Count/logcount are separate notability/exposure channels; observed approval is a different signal.",
+    "Counts cover training-selected 1500-item universe, not the full catalog."
+  ],
+  "duration_seconds": 25.108
+}

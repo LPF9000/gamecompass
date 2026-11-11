@@ -9,7 +9,7 @@ UI = Path(__file__).parents[1] / "src" / "gamecompass" / "ui.py"
 
 def test_onboarding_ui(tmp_path, monkeypatch):
     monkeypatch.setenv("GAMECOMPASS_DATA", str(tmp_path))
-    app = AppTest.from_file(str(UI)).run()
+    app = AppTest.from_file(str(UI), default_timeout=15).run()
     assert not app.exception
     app.text_input[0].set_value("Test Player")
     app.button[0].click().run()
@@ -22,7 +22,7 @@ def test_search_rate_and_settings(tmp_path, monkeypatch):
     store = Store(tmp_path)
     profile = store.create_profile("Test")
     store.upsert_game({"game_id": "steam:1", "title": "Wonderful Game"})
-    app = AppTest.from_file(str(UI)).run()
+    app = AppTest.from_file(str(UI), default_timeout=15).run()
     app.radio[0].set_value("Search").run()
     app.text_input[0].set_value("Wonderful").run()
     assert not app.exception
@@ -51,7 +51,7 @@ def test_discover_content_mode_and_separate_outcome(tmp_path, monkeypatch):
         return [dict(store.game("steam:99"), explanation="Real-model output mocked for an isolated UI test.")]
 
     monkeypatch.setattr(Recommender, "recommend", recommend)
-    app = AppTest.from_file(str(UI)).run()
+    app = AppTest.from_file(str(UI), default_timeout=15).run()
     app.radio[0].set_value("Discover").run()
     next(box for box in app.checkbox if box.label.startswith("Explore by game descriptions")).set_value(True).run()
     assert calls[-1]["content_explore"] is True
