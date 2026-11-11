@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gamecompass"
+version = "0.1.0"
+description = "Local-first game recommendations with reproducible cold-start evaluation"
+requires-python = ">=3.10,<3.13"
+license = {text = "MIT"}
+dependencies = ["numpy==1.26.4", "scipy==1.13.1", "scikit-learn==1.5.2", "streamlit==1.41.1", "requests==2.32.3", "psutil==6.1.1"]
+
+[project.optional-dependencies]
+dev = ["pytest==8.3.4", "ruff==0.9.10"]
+semantic = ["sentence-transformers==3.4.1"]
+
+[project.scripts]
+gamecompass = "gamecompass.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
