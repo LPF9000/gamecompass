@@ -9,3 +9,7 @@ artifacts/
 *.sqlite*
 .env
 .streamlit/secrets.toml
+
+log/
+log_tensorboard/
+saved/

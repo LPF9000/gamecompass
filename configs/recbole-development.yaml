@@ -1,0 +1,22 @@
+# Exact algorithm settings used by scripts/train_recbole.py.
+# Dataset path, epochs, seed and checkpoint path are supplied by that script.
+embedding_size: 64
+n_layers: 2
+train_batch_size: 32768
+learning_rate: 0.001
+train_neg_sample_args:
+  distribution: uniform
+  sample_num: 1
+eval_args:
+  split:
+    RS: [1, 0, 0]
+  order: TO
+  group_by: user
+  mode: full
+use_gpu: false
+reproducibility: true
+log_wandb: false
+show_progress: false
+
+# scripts/train_recbole.py overrides LightGCN train_batch_size to 1048576
+# so this 658217-positive cohort uses one full graph update per epoch.
